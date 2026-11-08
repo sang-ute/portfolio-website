@@ -1,0 +1,59 @@
+About the job
+Software Engineer Intern
+
+Ho Chi Minh
+
+Tech/Engineer
+
+Job Description
+
+Money Forward i, Inc. (MFi) is a subsidiary of the Money Forward group and was created in February 2021 to develop a new and intuitive SaaS management platform for the global market, called "Admina".
+
+We focused on creating a service that was more in tune with the needs of global users by starting with an international product team and committing to a simple and intuitive design. We have continued to grow the operations to incorporate talent from around the world to ensure that we develop the most diverse and versatile service to meet the needs of SaaS users worldwide.
+
+We pride ourselves on being an internationally diverse team that can work in harmony to overcome globalization challenges.
+
+Overview
+
+As a Software Engineer Intern, you’ll work alongside our Data Aggregation Platform or Web Team to contribute to the development of Admina, our global SaaS management product.
+
+The Data Aggregation Platform Team focuses on integrating data from over 300 SaaS applications.
+The Web Team builds and maintains the user-facing services that deliver seamless and reliable experiences.
+
+You’ll have the opportunity to gain hands-on experience with real-world projects, collaborate in an international environment, and learn from engineers using modern tools and AI-assisted workflows.
+
+If you enjoy learning, coding, and building meaningful software in a fast-paced environment, you’ll fit right in with our team!
+
+Responsibilities and Duties
+
+Contribute to backend or web feature development under the guidance of senior engineers
+Write clean, maintainable, and scalable code using TypeScript and Node.js (NestJS)
+Participate in code reviews, design discussions, and sprint planning
+Support debugging, testing, and documentation of features
+Collaborate with cross-functional teams (Frontend, Infrastructure, Product, etc.)
+Learn and apply software engineering best practices in a professional setting 
+
+Requirements
+
+Currently pursuing a Bachelor’s or Master’s degree in Computer Science, Software Engineering, or a related field
+Basic understanding of programming fundamentals, algorithms, and data structures
+Some experience with Node.js, TypeScript, or other programming languages (Java, C#, Go, etc.)
+Familiarity with web development concepts, REST APIs, or databases (MySQL preferred)
+Enthusiasm for learning new technologies and contributing to real-world projects
+Strong communication and teamwork skills
+(Optional but nice to have) Familiarity with Docker or AWS
+
+Nice to have
+
+Experience building small projects with Node.js or any web framework
+Familiarity with browser automation tools (Puppeteer, Selenium)
+Knowledge of NoSQL databases like DynamoDB or ElasticSearch
+Curiosity about cloud technologies (AWS, Terraform)
+Interest in AI-assisted development tools 
+
+Technology stack
+
+Backend: Nest.js (Typescript)
+Frontend: Vue.js/Nuxt.js (we are migrating to React.js), Typescript, TailwindCSS
+Infrastructure: MySQL, ElasticSearch, AWS (ECS, SQS, Lambda, DynamoDB), Terraform
+Monitoring & CI/CD: Datadog, Rollbar, GitHub Action

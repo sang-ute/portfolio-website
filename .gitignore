@@ -1,0 +1,16 @@
+# Private & Sensitive documents
+MFV-2026/
+*.docx
+*.exe
+*B?ng Di?m*
+*Bang Diem*
+*Bảng Điểm*
+MFV.OL.*
+*Offer*
+*ID*
+*Bank*
+.vscode/
+.idea/
+*.log
+.DS_Store
+Thumbs.db

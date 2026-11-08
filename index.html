@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nguyen Quang Sang | Software Engineer & Cloud Trainee</title>
+  <meta name="description" content="Portfolio of Nguyen Quang Sang - Software Engineer Intern at Money Forward Vietnam, HCMUTE Software Engineering student passionate about backend microservices, cloud architecture, and scalable systems.">
+  <meta name="author" content="Nguyen Quang Sang">
+  <meta property="og:title" content="Nguyen Quang Sang | Software Engineer Portfolio">
+  <meta property="og:description" content="Software Engineer Intern at Money Forward Vietnam | AWS Cloud Trainee | HCMUTE Software Engineering">
+  <meta property="og:image" content="assets/profile.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 font-sans antialiased selection:bg-blue-500 selection:text-white">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="hidden glass-card px-5 py-3 rounded-xl shadow-xl flex items-center space-x-3 text-sm font-medium border border-blue-500/30 text-slate-800 dark:text-slate-100">
+    <i data-lucide="check-circle" class="w-5 h-5 text-emerald-500"></i>
+    <span id="toast-msg">Copied to clipboard!</span>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-200/80 dark:border-slate-800/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Logo / Name -->
+      <a href="#hero" class="flex items-center space-x-3 group">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-base shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
+          QS
+        </div>
+        <div>
+          <span class="font-bold text-lg tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Quang Sang</span>
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 ml-1.5 animate-pulse" title="Available for opportunities"></span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <a href="#about" class="nav-link text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+        <a href="#experience" class="nav-link text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Experience</a>
+        <a href="#projects" class="nav-link text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+        <a href="#skills" class="nav-link text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Skills</a>
+        <a href="#education" class="nav-link text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Education</a>
+        <a href="#contact" class="nav-link text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right Actions: Theme Toggle & Resume Buttons -->
+      <div class="flex items-center space-x-3">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" type="button" aria-label="Toggle theme" class="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800/80 transition-colors">
+          <i data-lucide="moon" id="theme-icon" class="w-5 h-5 hidden dark:block"></i>
+          <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
+        </button>
+
+        <!-- View Resume Modal -->
+        <button type="button" class="open-resume-modal hidden sm:inline-flex items-center space-x-1.5 text-xs font-semibold px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="file-text" class="w-4 h-4 text-blue-500"></i>
+          <span>Preview CV</span>
+        </button>
+
+        <!-- Direct PDF Download -->
+        <a href="assets/cv.pdf" download="Nguyen_Quang_Sang_CV.pdf" class="inline-flex items-center space-x-2 text-xs font-semibold px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-600/25 transition-all hover:shadow-blue-600/40">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Download CV</span>
+          <span class="sm:hidden">CV</span>
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobile-menu-btn" type="button" aria-label="Open navigation menu" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800/80 transition-colors">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-6 glass border-b border-slate-200 dark:border-slate-800 space-y-3">
+      <a href="#about" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-800">About</a>
+      <a href="#experience" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-800">Experience</a>
+      <a href="#projects" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-800">Projects</a>
+      <a href="#skills" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-800">Skills</a>
+      <a href="#education" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-800">Education</a>
+      <a href="#contact" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-800">Contact</a>
+      <button type="button" class="open-resume-modal w-full text-left px-3 py-2 rounded-lg text-base font-medium text-blue-600 dark:text-blue-400 hover:bg-slate-200/50 dark:hover:bg-slate-800 flex items-center space-x-2">
+        <i data-lucide="file-text" class="w-5 h-5"></i>
+        <span>Preview Full Resume</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+      <!-- Background Ambient Glow -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-blue-500/20 via-indigo-500/15 to-purple-500/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Hero Text Content -->
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <!-- Status Badge -->
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-100/80 text-blue-800 dark:bg-blue-950/80 dark:text-blue-300 border border-blue-300 dark:border-blue-800 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+              <span>Software Engineer Intern @ Money Forward Vietnam</span>
+            </div>
+
+            <!-- Main Heading -->
+            <div>
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                Hi, I'm <span class="gradient-text">Nguyen Quang Sang</span>
+              </h1>
+              <p class="mt-2 text-lg sm:text-xl font-medium text-slate-600 dark:text-slate-300">
+                Backend Developer & Cloud Architecture Enthusiast
+              </p>
+            </div>
+
+            <!-- Bio Paragraph -->
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              Final-year Software Engineering student at <strong class="text-slate-800 dark:text-slate-200">HCMUTE</strong> (Class of 2026). Passionate about building robust microservices, scalable cloud architectures on <strong class="text-blue-600 dark:text-blue-400">AWS</strong>, and resilient backend systems using <strong class="text-slate-800 dark:text-slate-200">TypeScript, Node.js, and Python</strong>.
+            </p>
+
+            <!-- Key Info Pills -->
+            <div class="flex flex-wrap gap-2.5 justify-center lg:justify-start text-xs font-medium text-slate-600 dark:text-slate-300">
+              <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-rose-500"></i>
+                <span>Ho Chi Minh City, Vietnam</span>
+              </span>
+              <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-blue-500"></i>
+                <span>HCMUTE • GPA: 3.2 / 4.0</span>
+              </span>
+              <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <i data-lucide="languages" class="w-3.5 h-3.5 text-indigo-500"></i>
+                <span>English Fluent (IELTS 7.5)</span>
+              </span>
+            </div>
+
+            <!-- Action CTAs -->
+            <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
+              <a href="#projects" class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 hover:-translate-y-0.5 transition-all">
+                <span>View Projects</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+
+              <a href="assets/cv.pdf" download="Nguyen_Quang_Sang_CV.pdf" class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-blue-500 bg-white/80 dark:bg-slate-900/80 font-semibold text-sm hover:-translate-y-0.5 transition-all shadow-sm">
+                <i data-lucide="download" class="w-4 h-4 text-blue-500"></i>
+                <span>Download CV (PDF)</span>
+              </a>
+
+              <a href="#contact" class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm transition-all">
+                <i data-lucide="mail" class="w-4 h-4 text-emerald-500"></i>
+                <span>Get In Touch</span>
+              </a>
+            </div>
+
+            <!-- Quick Social & Contact Badges -->
+            <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+              <a href="https://github.com/sang-ute" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+                <i data-lucide="github" class="w-5 h-5"></i>
+                <span>@sang-ute</span>
+              </a>
+
+              <span class="text-slate-300 dark:text-slate-700">•</span>
+
+              <a href="https://www.linkedin.com/in/sang-nguyen-quang-9946b6200/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <i data-lucide="linkedin" class="w-5 h-5 text-blue-600"></i>
+                <span>LinkedIn</span>
+              </a>
+
+              <span class="text-slate-300 dark:text-slate-700">•</span>
+
+              <button type="button" data-copy="nqs28012004@gmail.com" class="inline-flex items-center space-x-1.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" title="Click to copy email">
+                <i data-lucide="copy" class="w-4 h-4"></i>
+                <span>nqs28012004@gmail.com</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Hero Image & Interactive Card -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-72 sm:w-80 lg:w-96">
+              
+              <!-- Ambient Ring -->
+              <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-pink-500 rounded-3xl blur-lg opacity-40 group-hover:opacity-100 transition duration-1000 animate-pulse"></div>
+
+              <!-- Main Card Container -->
+              <div class="relative glass-card rounded-2xl p-4 sm:p-5 border border-slate-200/80 dark:border-slate-800">
+                <div class="overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800 aspect-square relative shadow-inner">
+                  <img src="assets/profile.jpg" onerror="this.onerror=null; this.src='https://avatars.githubusercontent.com/u/114816840?v=4';" alt="Nguyen Quang Sang" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-4">
+                    <div class="text-white">
+                      <div class="text-sm font-bold">Nguyen Quang Sang</div>
+                      <div class="text-xs text-blue-200">Software Engineer Intern</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Floating Tech Badges -->
+                <div class="mt-4 grid grid-cols-2 gap-2 text-xs font-semibold">
+                  <div class="p-2 rounded-lg bg-blue-50/80 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800 flex items-center space-x-2">
+                    <i data-lucide="cloud" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
+                    <span>AWS & Cloud</span>
+                  </div>
+                  <div class="p-2 rounded-lg bg-indigo-50/80 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 flex items-center space-x-2">
+                    <i data-lucide="server" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
+                    <span>Node & NestJS</span>
+                  </div>
+                  <div class="p-2 rounded-lg bg-emerald-50/80 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 flex items-center space-x-2">
+                    <i data-lucide="database" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+                    <span>Prisma & SQL</span>
+                  </div>
+                  <div class="p-2 rounded-lg bg-purple-50/80 dark:bg-purple-950/50 border border-purple-200 dark:border-purple-800 flex items-center space-x-2">
+                    <i data-lucide="boxes" class="w-4 h-4 text-purple-600 dark:text-purple-400"></i>
+                    <span>Docker & gRPC</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Decorative Floating Icons -->
+              <div class="hidden sm:flex absolute -top-4 -right-4 p-3 rounded-2xl glass-card shadow-xl animate-float items-center justify-center">
+                <span class="text-xl">⚡</span>
+              </div>
+              <div class="hidden sm:flex absolute -bottom-4 -left-4 p-3 rounded-2xl glass-card shadow-xl animate-float-delayed items-center justify-center">
+                <span class="text-xl">🚀</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Fast Facts Ribbon -->
+    <section class="border-y border-slate-200/80 dark:border-slate-800/80 bg-white/50 dark:bg-slate-900/40 py-8 backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div class="p-4 rounded-xl glass-card">
+            <div class="text-3xl font-extrabold text-blue-600 dark:text-blue-400">HCMUTE</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Class of 2026 • Software Eng</div>
+          </div>
+          <div class="p-4 rounded-xl glass-card">
+            <div class="text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">3.2 / 4.0</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Cumulative GPA</div>
+          </div>
+          <div class="p-4 rounded-xl glass-card">
+            <div class="text-3xl font-extrabold text-emerald-600 dark:text-emerald-400">14+</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">GitHub Repos & Lab Works</div>
+          </div>
+          <div class="p-4 rounded-xl glass-card">
+            <div class="text-3xl font-extrabold text-pink-600 dark:text-pink-400">IELTS 7.5</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Fluent English (Certified)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 md:py-28">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-2">Introduction</h2>
+          <p class="text-3xl sm:text-4xl font-extrabold tracking-tight">Engineering Scalable Software & Cloud Systems</p>
+          <div class="w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Narrative -->
+          <div class="lg:col-span-7 space-y-5 text-slate-600 dark:text-slate-400 leading-relaxed text-base">
+            <p>
+              I am a final-year Software Engineering student at <strong class="text-slate-900 dark:text-white">Ho Chi Minh City University of Technology and Education (HCMUTE)</strong>. My technical journey is anchored in backend development, distributed architecture, and cloud engineering on AWS.
+            </p>
+            <p>
+              Currently, as a <strong class="text-slate-900 dark:text-white">Software Engineer Intern at Money Forward Vietnam (MFi)</strong>, I contribute to <em class="text-blue-600 dark:text-blue-400 font-semibold not-italic">Admina</em>—a global SaaS management platform—working on backend features, microservice integrations, and data aggregations using TypeScript, NestJS, and modern cloud patterns.
+            </p>
+            <p>
+              My philosophy: <span class="italic text-slate-800 dark:text-slate-200">"Practical first, curious always, with an obsessive focus on clean system boundaries, secure IAM policies, and maintainable APIs."</span> Whether building gRPC microservices, serverless facial recognition pipelines, or native Kotlin apps, I thrive on turning complex requirements into production-ready software.
+            </p>
+
+            <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40">
+                <div class="flex items-center space-x-3 text-slate-900 dark:text-white font-semibold text-sm">
+                  <div class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400">
+                    <i data-lucide="server" class="w-4 h-4"></i>
+                  </div>
+                  <span>Backend & Microservices</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">RESTful APIs, gRPC, API Gateway, Prisma ORM, MySQL, Redis, authentication flows.</p>
+              </div>
+
+              <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40">
+                <div class="flex items-center space-x-3 text-slate-900 dark:text-white font-semibold text-sm">
+                  <div class="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400">
+                    <i data-lucide="cloud" class="w-4 h-4"></i>
+                  </div>
+                  <span>Cloud & Serverless</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">AWS EC2, S3, Lambda, VPC, IAM least-privilege, Route 53, Rekognition, Docker containers.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fast Profile Attributes Card -->
+          <div class="lg:col-span-5">
+            <div class="glass-card rounded-2xl p-6 space-y-4">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white pb-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                <span>Personal Profile</span>
+                <span class="text-xs font-normal text-slate-400 font-mono">ID: 22110067</span>
+              </h3>
+
+              <div class="space-y-3 text-sm">
+                <div class="flex justify-between py-1 border-b border-slate-100 dark:border-slate-800/60">
+                  <span class="text-slate-500 dark:text-slate-400">Full Name</span>
+                  <span class="font-medium text-slate-900 dark:text-slate-200">Nguyễn Quang Sáng</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-slate-100 dark:border-slate-800/60">
+                  <span class="text-slate-500 dark:text-slate-400">Role</span>
+                  <span class="font-medium text-blue-600 dark:text-blue-400">Software Engineer Intern</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-slate-100 dark:border-slate-800/60">
+                  <span class="text-slate-500 dark:text-slate-400">Current Affiliation</span>
+                  <span class="font-medium text-slate-900 dark:text-slate-200">Money Forward Vietnam (MFi)</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-slate-100 dark:border-slate-800/60">
+                  <span class="text-slate-500 dark:text-slate-400">University</span>
+                  <span class="font-medium text-slate-900 dark:text-slate-200">HCMUTE (Software Eng)</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-slate-100 dark:border-slate-800/60">
+                  <span class="text-slate-500 dark:text-slate-400">Expected Graduation</span>
+                  <span class="font-medium text-slate-900 dark:text-slate-200">05 / 2026</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-slate-100 dark:border-slate-800/60">
+                  <span class="text-slate-500 dark:text-slate-400">English Certificate</span>
+                  <span class="font-medium text-emerald-600 dark:text-emerald-400 font-bold">IELTS 7.5</span>
+                </div>
+                <div class="flex justify-between py-1">
+                  <span class="text-slate-500 dark:text-slate-400">GitHub Profile</span>
+                  <a href="https://github.com/sang-ute" target="_blank" class="font-medium text-blue-600 hover:underline">github.com/sang-ute</a>
+                </div>
+              </div>
+
+              <div class="pt-2">
+                <button type="button" class="open-resume-modal w-full py-2.5 px-4 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-semibold text-xs text-center hover:opacity-90 transition-opacity flex items-center justify-center space-x-2">
+                  <i data-lucide="eye" class="w-4 h-4"></i>
+                  <span>Inspect Full Resume & Experience</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section id="experience" class="py-20 bg-slate-100/60 dark:bg-slate-900/30 border-y border-slate-200/70 dark:border-slate-800/70">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-2">Track Record</h2>
+          <p class="text-3xl sm:text-4xl font-extrabold tracking-tight">Work & Industry Experience</p>
+          <div class="w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-8 relative before:absolute before:inset-0 before:left-5 md:before:left-1/2 before:w-0.5 before:bg-slate-300 dark:before:bg-slate-800 before:-translate-x-1/2">
+          
+          <!-- Experience Item 1: Money Forward Vietnam -->
+          <div class="relative flex flex-col md:flex-row items-start group">
+            
+            <!-- Timeline Center Marker -->
+            <div class="absolute left-5 md:left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-blue-600 border-4 border-slate-50 dark:border-slate-950 flex items-center justify-center text-white shadow-md z-10">
+              <i data-lucide="briefcase" class="w-4 h-4"></i>
+            </div>
+
+            <!-- Content Card -->
+            <div class="ml-12 md:ml-0 md:w-1/2 md:pr-10 w-full">
+              <div class="glass-card p-6 rounded-2xl relative">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-300">
+                    2026 - Present
+                  </span>
+                  <span class="text-xs text-slate-500 dark:text-slate-400">Ho Chi Minh City</span>
+                </div>
+
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Software Engineer Intern</h3>
+                <h4 class="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-3">Money Forward Vietnam (MFi)</h4>
+                
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                  Contributing to <strong>Admina</strong>—Money Forward's global SaaS management platform—working directly with the Data Aggregation Platform and Web teams.
+                </p>
+
+                <ul class="text-xs text-slate-600 dark:text-slate-400 space-y-2 list-disc list-inside mb-4">
+                  <li>Write clean, maintainable, and scalable backend code using <strong>TypeScript</strong> and <strong>Node.js / NestJS</strong>.</li>
+                  <li>Engage in feature development, code reviews, design discussions, and sprint planning in an international engineering culture.</li>
+                  <li>Work with microservice integrations, API gateways, MySQL, Docker, and AWS cloud workflows.</li>
+                  <li>Collaborate cross-functionally across frontend, infrastructure, and product management teams.</li>
+                </ul>
+
+                <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+                  <span class="text-xs px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">TypeScript</span>
+                  <span class="text-xs px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">NestJS</span>
+                  <span class="text-xs px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Node.js</span>
+                  <span class="text-xs px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">MySQL</span>
+                  <span class="text-xs px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Docker</span>
+                  <span class="text-xs px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">AWS</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hidden md:block md:w-1/2"></div>
+          </div>
+
+          <!-- Experience Item 2: AWS Study Group -->
+          <div class="relative flex flex-col md:flex-row items-start group">
+            
+            <!-- Timeline Center Marker -->
+            <div class="absolute left-5 md:left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-indigo-600 border-4 border-slate-50 dark:border-slate-950 flex items-center justify-center text-white shadow-md z-10">
+              <i data-lucide="cloud" class="w-4 h-4"></i>
+            </div>
+
+            <div class="hidden md:block md:w-1/2"></div>
+
+            <!-- Content Card -->
+            <div class="ml-12 md:ml-0 md:w-1/2 md:pl-10 w-full">
+              <div class="glass-card p-6 rounded-2xl relative">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-100 text-indigo-800 dark:bg-indigo-900/60 dark:text-indigo-300">
+                    04/2025 - 07/2025
+                  </span>
+                  <span class="text-xs text-slate-500 dark:text-slate-400">Hybrid • Full-time</span>
+                </div>
+
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Cloud Engineering Trainee</h3>
+                <h4 class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 mb-3">AWS Study Group</h4>
+                
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                  Completed an intensive cloud engineering training program focused on AWS services, enterprise infrastructure design, and cloud architecture patterns.
+                </p>
+
+                <ul class="text-xs text-slate-600 dark:text-slate-400 space-y-2 list-disc list-inside mb-4">
+                  <li>Designed and deployed scalable cloud infrastructure using <strong>EC2, S3, VPC, IAM, and Route 53</strong>.</li>
+                  <li>Implemented secure IAM policies following <strong>least-privilege</strong> best practices.</li>
+                  <li>Applied serverless architecture concepts using <strong>AWS Lambda</strong> and event-driven patterns.</li>
+                  <li>Gained practical hands-on experience in AWS networking, subnets, route tables, security groups, and cloud monitoring.</li>
+                </ul>
+
+                <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+                  <span class="text-xs px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">AWS EC2</span>
+                  <span class="text-xs px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">S3</span>
+                  <span class="text-xs px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">VPC</span>
+                  <span class="text-xs px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">IAM</span>
+                  <span class="text-xs px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Lambda</span>
+                  <span class="text-xs px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Route 53</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="py-20 md:py-28">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-2">Portfolio</h2>
+          <p class="text-3xl sm:text-4xl font-extrabold tracking-tight">Featured Engineering Projects</p>
+          <div class="w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4 rounded-full"></div>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-4">
+            Curated systems and applications built with microservices, AWS cloud, TypeScript, React, and Kotlin.
+          </p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
+          <button type="button" class="filter-btn active px-4 py-2 rounded-xl text-xs font-semibold border border-slate-300 dark:border-slate-700 hover:border-blue-500 transition-all" data-filter="all">All Projects</button>
+          <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border border-slate-300 dark:border-slate-700 hover:border-blue-500 transition-all" data-filter="web">Full-Stack & Microservices</button>
+          <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border border-slate-300 dark:border-slate-700 hover:border-blue-500 transition-all" data-filter="cloud">Cloud & AWS</button>
+          <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border border-slate-300 dark:border-slate-700 hover:border-blue-500 transition-all" data-filter="mobile">Kotlin & Android</button>
+          <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border border-slate-300 dark:border-slate-700 hover:border-blue-500 transition-all" data-filter="systems">Systems & AI</button>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Project 1: Vinabooking -->
+          <div class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="web microservices">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="p-2.5 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400">
+                  <i data-lucide="building" class="w-6 h-6"></i>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">Flagship</span>
+                  <a href="https://github.com/HLoc26/Vinabooking-New" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="View GitHub Repo">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                  </a>
+                </div>
+              </div>
+
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Vinabooking Platform</h3>
+              <p class="text-xs font-medium text-blue-600 dark:text-blue-400 mb-3">Accommodation Booking Microservices</p>
+              
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                Full-stack accommodation booking platform engineered with a microservices API Gateway architecture. Key public contributions include booking services, email OTP auth flows, review systems, owner accommodation workflows, payment integrations, and semantic search.
+              </p>
+
+              <div class="space-y-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4">
+                <div class="flex items-center space-x-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  <span>API Gateway & gRPC inter-service communication</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  <span>Docker containerized deployment & MySQL / Prisma ORM</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">React</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">TypeScript</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Node.js</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Prisma</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">gRPC</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Docker</span>
+              </div>
+              <div class="mt-4 flex items-center justify-between">
+                <a href="https://github.com/HLoc26/Vinabooking-New" target="_blank" class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center space-x-1">
+                  <span>Explore Repository</span>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+                <a href="https://github.com/HLoc26/VinaBooking" target="_blank" class="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                  Legacy Repo →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: AWS Rekognition -->
+          <div class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="cloud web">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="p-2.5 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">
+                  <i data-lucide="scan-face" class="w-6 h-6"></i>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300">AWS Cloud</span>
+                  <a href="https://github.com/sang-ute/rekognition-project" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="View GitHub Repo">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                  </a>
+                </div>
+              </div>
+
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">AWS Face Recognition</h3>
+              <p class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-3">Cloud Attendance & Face Indexing</p>
+              
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                Full-stack attendance tracking and face recognition application built entirely on AWS cloud services. Automatically processes image uploads to S3, indexes faces with AWS Rekognition, and stores attendance metrics in DynamoDB via AWS Lambda serverless handlers.
+              </p>
+
+              <div class="space-y-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4">
+                <div class="flex items-center space-x-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  <span>AWS Rekognition facial indexing & similarity matching</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  <span>Serverless pipeline: S3 trigger → Lambda → DynamoDB</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">React</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">AWS Rekognition</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">S3</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">DynamoDB</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Lambda</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Amplify</span>
+              </div>
+              <div class="mt-4 flex items-center justify-between">
+                <a href="https://github.com/sang-ute/rekognition-project" target="_blank" class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center space-x-1">
+                  <span>Explore Repository</span>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Music Streaming Web App -->
+          <div class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="web">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="p-2.5 rounded-xl bg-pink-100 dark:bg-pink-950 text-pink-600 dark:text-pink-400">
+                  <i data-lucide="music" class="w-6 h-6"></i>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-pink-100 text-pink-800 dark:bg-pink-950 dark:text-pink-300">Web App</span>
+                  <a href="https://github.com/HLoc26/PROJECT_IT_1" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="View GitHub Repo">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                  </a>
+                </div>
+              </div>
+
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Music Streaming Web</h3>
+              <p class="text-xs font-medium text-pink-600 dark:text-pink-400 mb-3">Audio Streaming & Artist Catalog</p>
+              
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                Interactive audio streaming platform featuring artist profiles, track uploads, playlists, audio playback controls, and authentication. Implemented complete frontend/backend workflows and audio player integration.
+              </p>
+
+              <div class="space-y-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4">
+                <div class="flex items-center space-x-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  <span>Audio player controls, playlist curation, track upload</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  <span>User auth, session state, and responsive web interface</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">JavaScript</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Node.js</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Express</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Web Audio</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">CSS3</span>
+              </div>
+              <div class="mt-4 flex items-center justify-between">
+                <a href="https://github.com/HLoc26/PROJECT_IT_1" target="_blank" class="text-xs font-semibold text-pink-600 dark:text-pink-400 hover:underline flex items-center space-x-1">
+                  <span>Explore Repository</span>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: Kotlin Android Suite -->
+          <div class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="mobile">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="p-2.5 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400">
+                  <i data-lucide="smartphone" class="w-6 h-6"></i>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">Android Kotlin</span>
+                  <a href="https://github.com/sang-ute/WeatherProject" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="View Weather Project">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                  </a>
+                </div>
+              </div>
+
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Android Practice Lab</h3>
+              <p class="text-xs font-medium text-emerald-600 dark:text-emerald-400 mb-3">Native Kotlin Applications</p>
+              
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                Suite of native Android applications focusing on real-world patterns: <strong>WeatherProject</strong> (background notifications, REST API), <strong>Image Loader</strong> (async fetching & disk cache), <strong>Alarm & To-Do App</strong>, and <strong>Advanced Android Testing</strong>.
+              </p>
+
+              <div class="space-y-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4">
+                <div class="flex items-center space-x-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  <span>Coroutines, Retrofit, Room DB, WorkManager</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  <span>Robolectric & Mockito testing suites</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Kotlin</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Android SDK</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Retrofit</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Coroutines</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Testing</span>
+              </div>
+              <div class="mt-4 flex items-center justify-between">
+                <a href="https://github.com/sang-ute/WeatherProject" target="_blank" class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center space-x-1">
+                  <span>Weather App</span>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+                <a href="https://github.com/sang-ute/Mobile_Programming_To_do_list" target="_blank" class="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                  To-Do App →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: Battleship AI -->
+          <div class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="systems">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="p-2.5 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400">
+                  <i data-lucide="bot" class="w-6 h-6"></i>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300">AI & Algorithm</span>
+                  <a href="https://github.com/HLoc26/battleshipAI" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="View GitHub Repo">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                  </a>
+                </div>
+              </div>
+
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Battleship AI Engine</h3>
+              <p class="text-xs font-medium text-purple-600 dark:text-purple-400 mb-3">Intelligent Game Simulation</p>
+              
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                Artificial Intelligence course project: Battleship strategy game with heuristic search algorithms, probability density targeting, and parity parity search to minimize moves to victory.
+              </p>
+
+              <div class="space-y-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4">
+                <div class="flex items-center space-x-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  <span>Probability density & heuristic targeting maps</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  <span>Autonomous decision tree simulation in Python</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Python</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">AI</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Heuristics</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Search Algorithms</span>
+              </div>
+              <div class="mt-4 flex items-center justify-between">
+                <a href="https://github.com/HLoc26/battleshipAI" target="_blank" class="text-xs font-semibold text-purple-600 dark:text-purple-400 hover:underline flex items-center space-x-1">
+                  <span>Explore Repository</span>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6: DBMS & Windows Systems -->
+          <div class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="systems">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="p-2.5 rounded-xl bg-cyan-100 dark:bg-cyan-950 text-cyan-600 dark:text-cyan-400">
+                  <i data-lucide="terminal" class="w-6 h-6"></i>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300">Desktop & DBMS</span>
+                  <a href="https://github.com/HLoc26/PROJECT-DBMS" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="View DBMS Repo">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                  </a>
+                </div>
+              </div>
+
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Bookstore DBMS & Desktop</h3>
+              <p class="text-xs font-medium text-cyan-600 dark:text-cyan-400 mb-3">Enterprise Database & C# GUI</p>
+              
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                Relational bookstore database management system engineered with complex T-SQL stored procedures, triggers, ACID transactions, and index optimizations, coupled with a C# Windows .NET administration application.
+              </p>
+
+              <div class="space-y-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4">
+                <div class="flex items-center space-x-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  <span>T-SQL stored procedures, triggers, views & indexing</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  <span>Windows Form / .NET desktop interface</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">C# .NET</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">T-SQL</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">SQL Server</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800">Transactions</span>
+              </div>
+              <div class="mt-4 flex items-center justify-between">
+                <a href="https://github.com/HLoc26/PROJECT-DBMS" target="_blank" class="text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center space-x-1">
+                  <span>Explore DBMS</span>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+                <a href="https://github.com/sang-ute/Windows-Programming" target="_blank" class="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                  WinForms Repo →
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Technical Skills Matrix Section -->
+    <section id="skills" class="py-20 bg-slate-100/60 dark:bg-slate-900/30 border-y border-slate-200/70 dark:border-slate-800/70">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-2">Technical Skills</h2>
+          <p class="text-3xl sm:text-4xl font-extrabold tracking-tight">Tech Stack & Competencies</p>
+          <div class="w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Category 1: Languages -->
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="p-2.5 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400">
+                <i data-lucide="code" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Programming Languages</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-semibold border border-blue-200 dark:border-blue-800">TypeScript</span>
+              <span class="px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-semibold border border-blue-200 dark:border-blue-800">JavaScript (ES6+)</span>
+              <span class="px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 font-semibold border border-emerald-200 dark:border-emerald-800">Node.js</span>
+              <span class="px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 font-semibold border border-amber-200 dark:border-amber-800">Python</span>
+              <span class="px-3 py-1.5 rounded-lg bg-purple-50 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 font-semibold border border-purple-200 dark:border-purple-800">Kotlin</span>
+              <span class="px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200 dark:border-indigo-800">SQL</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold border border-slate-200 dark:border-slate-700">C#</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold border border-slate-200 dark:border-slate-700">C / C++</span>
+            </div>
+          </div>
+
+          <!-- Category 2: Frameworks & Web -->
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="p-2.5 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">
+                <i data-lucide="layers" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Frameworks & Web</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200 dark:border-indigo-800">NestJS</span>
+              <span class="px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200 dark:border-indigo-800">Express.js</span>
+              <span class="px-3 py-1.5 rounded-lg bg-cyan-50 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300 font-semibold border border-cyan-200 dark:border-cyan-800">React</span>
+              <span class="px-3 py-1.5 rounded-lg bg-cyan-50 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300 font-semibold border border-cyan-200 dark:border-cyan-800">Vite</span>
+              <span class="px-3 py-1.5 rounded-lg bg-teal-50 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300 font-semibold border border-teal-200 dark:border-teal-800">FastAPI</span>
+              <span class="px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 font-semibold border border-emerald-200 dark:border-emerald-800">Django</span>
+              <span class="px-3 py-1.5 rounded-lg bg-sky-50 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 font-semibold border border-sky-200 dark:border-sky-800">Tailwind CSS</span>
+            </div>
+          </div>
+
+          <!-- Category 3: Cloud & DevOps -->
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="p-2.5 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400">
+                <i data-lucide="cloud-lightning" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Cloud & DevOps</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 font-semibold border border-amber-200 dark:border-amber-800">AWS (EC2, S3)</span>
+              <span class="px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 font-semibold border border-amber-200 dark:border-amber-800">AWS Lambda</span>
+              <span class="px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 font-semibold border border-amber-200 dark:border-amber-800">VPC & IAM</span>
+              <span class="px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 font-semibold border border-amber-200 dark:border-amber-800">Route 53</span>
+              <span class="px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-semibold border border-blue-200 dark:border-blue-800">Docker</span>
+              <span class="px-3 py-1.5 rounded-lg bg-purple-50 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 font-semibold border border-purple-200 dark:border-purple-800">gRPC</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold border border-slate-200 dark:border-slate-700">API Gateway</span>
+            </div>
+          </div>
+
+          <!-- Category 4: Databases & Storage -->
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="p-2.5 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400">
+                <i data-lucide="database" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Databases & ORMs</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-semibold border border-blue-200 dark:border-blue-800">MySQL</span>
+              <span class="px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200 dark:border-indigo-800">Prisma ORM</span>
+              <span class="px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 font-semibold border border-emerald-200 dark:border-emerald-800">MongoDB</span>
+              <span class="px-3 py-1.5 rounded-lg bg-rose-50 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 font-semibold border border-rose-200 dark:border-rose-800">Redis</span>
+              <span class="px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 font-semibold border border-amber-200 dark:border-amber-800">DynamoDB</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold border border-slate-200 dark:border-slate-700">MS SQL Server</span>
+            </div>
+          </div>
+
+          <!-- Category 5: Tools & Methodologies -->
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="p-2.5 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400">
+                <i data-lucide="wrench" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Tools & Practices</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-3 py-1.5 rounded-lg bg-orange-50 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 font-semibold border border-orange-200 dark:border-orange-800">Git & GitHub</span>
+              <span class="px-3 py-1.5 rounded-lg bg-orange-50 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 font-semibold border border-orange-200 dark:border-orange-800">Postman</span>
+              <span class="px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-semibold border border-blue-200 dark:border-blue-800">Jira</span>
+              <span class="px-3 py-1.5 rounded-lg bg-purple-50 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 font-semibold border border-purple-200 dark:border-purple-800">Agile / Scrum</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold border border-slate-200 dark:border-slate-700">RESTful Architecture</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold border border-slate-200 dark:border-slate-700">CI/CD Workflows</span>
+            </div>
+          </div>
+
+          <!-- Category 6: Soft Skills & Languages -->
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="p-2.5 rounded-xl bg-pink-100 dark:bg-pink-950 text-pink-600 dark:text-pink-400">
+                <i data-lucide="users" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Communication & Mindset</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-3 py-1.5 rounded-lg bg-pink-50 dark:bg-pink-900/40 text-pink-700 dark:text-pink-300 font-semibold border border-pink-200 dark:border-pink-800">Cross-Team Collaboration</span>
+              <span class="px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 font-semibold border border-emerald-200 dark:border-emerald-800">Problem Solving</span>
+              <span class="px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-semibold border border-blue-200 dark:border-blue-800">English: IELTS 7.5</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold border border-slate-200 dark:border-slate-700">Vietnamese (Native)</span>
+              <span class="px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200 dark:border-indigo-800">Fast Autonomous Learner</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Education & Certifications Section -->
+    <section id="education" class="py-20 md:py-28">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-2">Qualifications</h2>
+          <p class="text-3xl sm:text-4xl font-extrabold tracking-tight">Education & Certifications</p>
+          <div class="w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- Education Card -->
+          <div class="lg:col-span-6 glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="flex items-center space-x-3 mb-6">
+              <div class="p-3 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400">
+                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white">University Education</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Undergraduate Degree</p>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h4 class="text-base font-bold text-slate-800 dark:text-slate-100">
+                    HCMC University of Technology and Engineering (HCMUTE)
+                  </h4>
+                  <p class="text-sm font-medium text-blue-600 dark:text-blue-400">Bachelor of Engineering in Software Engineering</p>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                  2022 - 05/2026
+                </span>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2">
+                <div class="flex justify-between text-xs">
+                  <span class="text-slate-500 dark:text-slate-400">Cumulative GPA:</span>
+                  <span class="font-bold text-slate-900 dark:text-white">3.2 / 4.0</span>
+                </div>
+                <div class="flex justify-between text-xs">
+                  <span class="text-slate-500 dark:text-slate-400">Class & Department:</span>
+                  <span class="font-medium text-slate-900 dark:text-slate-200">IT Engineering - Class of 2026 / 2027</span>
+                </div>
+                <div class="flex justify-between text-xs">
+                  <span class="text-slate-500 dark:text-slate-400">Core Coursework:</span>
+                  <span class="font-medium text-slate-900 dark:text-slate-200">Microservices, Cloud, DBMS, OS, Data Structures & Algorithms</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certifications Card -->
+          <div class="lg:col-span-6 glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="flex items-center space-x-3 mb-6">
+              <div class="p-3 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400">
+                <i data-lucide="award" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Professional Certifications</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Industry & Language Credentials</p>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <!-- Cert 1: AWS -->
+              <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-9 h-9 rounded-lg bg-amber-100 dark:bg-amber-950/60 text-amber-600 flex items-center justify-center font-bold text-sm">
+                    AWS
+                  </div>
+                  <div>
+                    <h5 class="text-sm font-bold text-slate-800 dark:text-slate-100">AWS Academy Cloud Developing</h5>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Amazon Web Services (AWS)</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold px-2 py-1 rounded bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">Certified</span>
+              </div>
+
+              <!-- Cert 2: Axon Active Scrum -->
+              <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-9 h-9 rounded-lg bg-blue-100 dark:bg-blue-950/60 text-blue-600 flex items-center justify-center font-bold text-sm">
+                    AA
+                  </div>
+                  <div>
+                    <h5 class="text-sm font-bold text-slate-800 dark:text-slate-100">SDWS Training (Agile / Scrum)</h5>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Axon Active Vietnam</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold px-2 py-1 rounded bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300">Certified</span>
+              </div>
+
+              <!-- Cert 3: IELTS -->
+              <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-9 h-9 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 flex items-center justify-center font-bold text-sm">
+                    EN
+                  </div>
+                  <div>
+                    <h5 class="text-sm font-bold text-slate-800 dark:text-slate-100">IELTS Academic 7.5</h5>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Fluent English (Listening, Reading, Writing, Speaking)</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold px-2 py-1 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">IELTS 7.5</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact & Connect Section -->
+    <section id="contact" class="py-20 md:py-28 bg-slate-100/60 dark:bg-slate-900/30 border-t border-slate-200/70 dark:border-slate-800/70">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-2">Get in Touch</h2>
+          <p class="text-3xl sm:text-4xl font-extrabold tracking-tight">Let's Connect & Collaborate</p>
+          <div class="w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4 rounded-full"></div>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-4">
+            Feel free to reach out for software engineering opportunities, internship follow-ups, or cloud architecture discussions.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          
+          <!-- Contact Methods -->
+          <div class="lg:col-span-5 space-y-4">
+            
+            <!-- Email Item -->
+            <div class="glass-card rounded-2xl p-5 flex items-center justify-between">
+              <div class="flex items-center space-x-3.5">
+                <div class="p-3 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400">Email Address</div>
+                  <a href="mailto:nqs28012004@gmail.com" class="text-sm font-bold text-slate-800 dark:text-slate-100 hover:text-blue-600">
+                    nqs28012004@gmail.com
+                  </a>
+                </div>
+              </div>
+              <button type="button" data-copy="nqs28012004@gmail.com" aria-label="Copy email" class="p-2 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Copy email">
+                <i data-lucide="copy" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <!-- Phone Item -->
+            <div class="glass-card rounded-2xl p-5 flex items-center justify-between">
+              <div class="flex items-center space-x-3.5">
+                <div class="p-3 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400">
+                  <i data-lucide="phone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400">Phone & Zalo</div>
+                  <a href="tel:0938963667" class="text-sm font-bold text-slate-800 dark:text-slate-100 hover:text-emerald-600">
+                    0938 963 667
+                  </a>
+                </div>
+              </div>
+              <button type="button" data-copy="0938963667" aria-label="Copy phone" class="p-2 rounded-lg text-slate-400 hover:text-emerald-600 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Copy phone">
+                <i data-lucide="copy" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <!-- GitHub Profile -->
+            <div class="glass-card rounded-2xl p-5 flex items-center justify-between">
+              <div class="flex items-center space-x-3.5">
+                <div class="p-3 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
+                  <i data-lucide="github" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400">GitHub Profile</div>
+                  <a href="https://github.com/sang-ute" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-slate-800 dark:text-slate-100 hover:text-blue-600">
+                    github.com/sang-ute
+                  </a>
+                </div>
+              </div>
+              <a href="https://github.com/sang-ute" target="_blank" class="p-2 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </div>
+
+            <!-- LinkedIn Profile -->
+            <div class="glass-card rounded-2xl p-5 flex items-center justify-between">
+              <div class="flex items-center space-x-3.5">
+                <div class="p-3 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-600">
+                  <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400">LinkedIn Profile</div>
+                  <a href="https://www.linkedin.com/in/sang-nguyen-quang-9946b6200/" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-slate-800 dark:text-slate-100 hover:text-blue-600">
+                    linkedin.com/in/sang-nguyen-quang
+                  </a>
+                </div>
+              </div>
+              <a href="https://www.linkedin.com/in/sang-nguyen-quang-9946b6200/" target="_blank" class="p-2 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Interactive Contact Message Drafter -->
+          <div class="lg:col-span-7">
+            <div class="glass-card rounded-2xl p-6 sm:p-8">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Send a Message</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">
+                Fill in your details below to instantly dispatch an email inquiry directly to my inbox.
+              </p>
+
+              <form id="contact-form" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="contact-name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
+                    <input type="text" id="contact-name" required placeholder="e.g. Recruiters / Engineering Lead" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                  </div>
+                  <div>
+                    <label for="contact-email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
+                    <input type="email" id="contact-email" required placeholder="name@company.com" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                  </div>
+                </div>
+
+                <div>
+                  <label for="contact-subject" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Subject</label>
+                  <select id="contact-subject" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                    <option value="Opportunity at our Company">Software Engineering Opportunity</option>
+                    <option value="Project Collaboration">Open Source / Project Collaboration</option>
+                    <option value="Cloud Architecture Discussion">AWS / Cloud Architecture Discussion</option>
+                    <option value="General Question">General Inquiry / Say Hello</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="contact-message" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Message</label>
+                  <textarea id="contact-message" rows="4" required placeholder="Share your message, project idea, or job specification here..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none"></textarea>
+                </div>
+
+                <div class="flex items-center justify-between pt-2">
+                  <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center space-x-1.5">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i>
+                    <span>Direct connection to nqs28012004@gmail.com</span>
+                  </span>
+
+                  <button type="submit" class="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow-md shadow-blue-600/30 hover:shadow-blue-600/50 transition-all flex items-center space-x-2">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span>Send Message</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Resume Preview Modal -->
+  <div id="resume-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="glass-card w-full max-w-4xl h-[90vh] rounded-2xl flex flex-col overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl">
+      <!-- Modal Header -->
+      <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-white/70 dark:bg-slate-900/70">
+        <div class="flex items-center space-x-2">
+          <i data-lucide="file-text" class="w-5 h-5 text-blue-600"></i>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Curriculum Vitae Preview — Nguyen Quang Sang</h3>
+        </div>
+        <div class="flex items-center space-x-2">
+          <a href="assets/cv.pdf" download="Nguyen_Quang_Sang_CV.pdf" class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 transition-colors">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            <span>Download PDF</span>
+          </a>
+          <button id="close-resume-modal" type="button" class="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body (Iframe) -->
+      <div class="flex-1 bg-slate-100 dark:bg-slate-950 p-2">
+        <iframe src="assets/cv.pdf" class="w-full h-full rounded-xl border-0" title="Resume PDF View">
+          <p>Your browser does not support inline PDFs. <a href="assets/cv.pdf" class="text-blue-600 underline">Click here to download.</a></p>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200/80 dark:border-slate-800/80 bg-white/40 dark:bg-slate-950 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+      <div class="flex items-center space-x-2">
+        <span>© 2026 Nguyen Quang Sang. Built for high performance & scalable cloud engineering.</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <a href="#hero" class="hover:text-blue-600 transition-colors">Back to Top ↑</a>
+        <a href="https://github.com/sang-ute" target="_blank" class="hover:text-blue-600 transition-colors">GitHub Profile</a>
+        <a href="https://www.linkedin.com/in/sang-nguyen-quang-9946b6200/" target="_blank" class="hover:text-blue-600 transition-colors">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

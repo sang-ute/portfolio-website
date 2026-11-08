@@ -1,3 +1,11 @@
+# Next.js & Dependencies
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
 # Private & Sensitive documents
 MFV-2026/
 *.docx
@@ -16,4 +24,5 @@ CV - *.pdf
 *.log
 .DS_Store
 Thumbs.db
+
 

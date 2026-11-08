@@ -1,87 +1,102 @@
-# Nguyen Quang Sang — Personal Portfolio & CV Website 🚀
+# Nguyen Quang Sang — Developer Portfolio (Next.js 14 App Router) 🚀
 
-A modern, responsive, high-performance personal portfolio and interactive resume website for **Nguyen Quang Sang** (Nguyễn Quang Sáng) — Software Engineer Intern at Money Forward Vietnam (MFi) & Cloud Engineering Trainee.
-
----
-
-## 🌟 Highlights & Features
-
-- **Professional Profile**: Tailored showcase reflecting role at Money Forward Vietnam (Data Aggregation & Web teams) and Cloud infrastructure training on AWS.
-- **Interactive Project Filtering**: Instant filtering across *Full-Stack & Microservices*, *Cloud & AWS*, *Kotlin & Android*, and *Systems & AI*.
-- **Deep GitHub Integration**: Featured repositories and contributions linked directly to [@sang-ute](https://github.com/sang-ute) and collaborative projects.
-- **Dark & Light Mode**: Seamless theme switching with automatic system preference detection and localStorage persistence.
-- **Interactive Resume Modal & Direct Download**: In-browser preview of `assets/cv.pdf` with direct PDF download button.
-- **Contact & Clipboard Actions**: One-click copy for email (`nqs28012004@gmail.com`) and phone (`0938963667`) with toast notification alerts and pre-filled email drafter.
-- **Zero Build Dependencies**: Pure HTML5, Tailwind CSS, Lucide icons, and modern JavaScript. Works out of the box by opening `index.html`.
+A modern, production-grade personal portfolio and interactive resume built with **Next.js 14 (App Router)**, **React 18**, **TypeScript**, **Tailwind CSS**, and **Framer Motion** for **Nguyen Quang Sang** (Nguyễn Quang Sáng) — Software Engineer Intern at Money Forward Vietnam (MFi) & Cloud Engineering Trainee.
 
 ---
 
-## 📂 Project Structure
+## 🌟 Tech Stack & Highlights
+
+- **Framework**: [Next.js 14](https://nextjs.org/) (App Router, Server Components & Client Components)
+- **UI Library**: React 18 & TypeScript
+- **Styling**: Tailwind CSS with custom glassmorphism, glowing gradients, and Dark/Light mode theme system
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) for fluid page animations and interactive filter transitions
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Typography**: Google Fonts (`Inter` and `JetBrains Mono` via `next/font`)
+- **Responsive**: Pixel-perfect design across mobile, tablet, and ultra-wide screens
+
+---
+
+## 📂 Project Architecture
 
 ```
 Job-2026/
-├── index.html            # Main portfolio landing page
-├── cv.html               # Printable A4 CV template
-├── css/
-│   └── style.css         # Glassmorphism, glow accents, animations & styles
-├── js/
-│   └── main.js           # Filtering, theme toggle, toast alerts, modals & scrollspy
-├── assets/
-│   ├── profile.jpg       # Profile portrait photo
-│   └── cv.pdf            # Curated PDF resume
-├── .gitignore            # Protects private transcripts, offers & IDs
-└── README.md             # Project documentation
+├── public/
+│   └── assets/
+│       ├── profile.jpg         # Profile portrait photo
+│       └── cv.pdf              # PDF Resume for preview & download
+├── src/
+│   ├── app/
+│   │   ├── globals.css         # Tailwind & custom CSS variables
+│   │   ├── layout.tsx          # Root layout with fonts, metadata & ThemeProvider
+│   │   └── page.tsx            # Main page composition with interactive modals & toasts
+│   ├── components/
+│   │   ├── ThemeProvider.tsx   # React Theme context (dark/light, localStorage)
+│   │   ├── Navbar.tsx          # Glassmorphic header with active links & drawer
+│   │   ├── Hero.tsx            # Animated hero section with floating badges & CTAs
+│   │   ├── Metrics.tsx         # Quick statistics ribbon (HCMUTE, GPA 3.2, 14+ repos, IELTS 7.5)
+│   │   ├── About.tsx           # Engineering story, pillars & profile attributes
+│   │   ├── Experience.tsx      # Money Forward Vietnam & AWS Study Group timeline
+│   │   ├── Projects.tsx        # Framer Motion animated filterable project gallery
+│   │   ├── Skills.tsx          # Interactive categorized technical matrix
+│   │   ├── Education.tsx       # HCMUTE degree & credentials (AWS, Scrum, IELTS)
+│   │   ├── Contact.tsx         # Direct contact channels & interactive email drafter
+│   │   ├── ResumeModal.tsx     # In-browser CV PDF viewer modal
+│   │   └── Footer.tsx          # Footer with credits & social shortcuts
+│   ├── data/
+│   │   └── portfolio.ts        # Strongly-typed data store for projects, skills & bios
+│   └── lib/
+│       └── utils.ts            # Tailwind clsx + twMerge utility
+├── next.config.mjs             # Next.js configuration
+├── tailwind.config.ts          # Tailwind theme configuration
+├── tsconfig.json               # TypeScript configuration
+└── package.json                # Project dependencies and scripts
 ```
 
 ---
 
-## 🚀 How to Run Locally
+## 🚀 Getting Started
 
-### Option 1: Direct File Open
-Simply double-click `index.html` in your file explorer or open it with your favorite browser (Chrome, Edge, Firefox, Brave, Safari).
-
-### Option 2: Live Local Server
-If you prefer running via a local server:
-
-```powershell
-# Using Python
-python -m http.server 8000
-
-# OR using Node.js / npx
-npx serve .
+### 1. Install Dependencies
+```bash
+npm install
 ```
-Then visit `http://localhost:8000` in your browser.
+
+### 2. Start Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### 3. Build for Production
+```bash
+npm run build
+npm run start
+```
 
 ---
 
-## 🌿 Git Branch & GitHub Deployment
+## 🌿 Git Branch & Deployment to `@sang-ute`
 
-The git repository has been initialized with the branch:
+The codebase is checked out on the **`website`** branch.
+
+### Pushing to GitHub:
 ```bash
-branch: website
-```
-
-### To commit and push to your GitHub account (`@sang-ute`):
-
-1. **Stage and commit the website files**:
-```bash
-git add .
-git commit -m "feat: generate modern portfolio website from CV and GitHub profile"
-```
-
-2. **Connect to your remote repository at `@sang-ute`**:
-Create a repository on GitHub (e.g. `Job-2026` or `sang-ute.github.io`), then run:
-```bash
-# Example if using a repo named Job-2026:
+# Add your GitHub repository as remote:
 git remote add origin https://github.com/sang-ute/Job-2026.git
-git push -u origin website
 
-# Or to publish directly to GitHub Pages on main:
-git branch -M main
-git push -u origin main
+# Stage changes and commit:
+git add .
+git commit -m "feat: build Next.js 14 developer portfolio with TypeScript and Tailwind CSS"
+
+# Push to your GitHub repository:
+git push -u origin website
 ```
+
+### Deploying:
+- **Vercel** (Recommended for Next.js): Import repository from GitHub at [vercel.com](https://vercel.com) for 1-click zero-config deployment.
+- **GitHub Pages**: You can also use `next export` or static output (`output: 'export'` in `next.config.mjs`) to deploy to GitHub Pages.
 
 ---
 
 ## 🛡️ Security Note
-The `.gitignore` has been pre-configured to ensure sensitive personal files (such as transcripts, ID card scans, and offer letters in `MFV-2026`) are never tracked or exposed to public repositories.
+Sensitive personal documents (such as offer letters and ID photos in `MFV-2026/`) are ignored by `.gitignore` to prevent leaking private information to public repositories.

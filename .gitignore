@@ -9,8 +9,11 @@ MFV.OL.*
 *Offer*
 *ID*
 *Bank*
+CV - *.pdf
+* - CV - *.pdf
 .vscode/
 .idea/
 *.log
 .DS_Store
 Thumbs.db
+

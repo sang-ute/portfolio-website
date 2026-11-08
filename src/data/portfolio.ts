@@ -39,6 +39,8 @@ export interface Certification {
   type: string;
 }
 
+const basePath = process.env.NODE_ENV === "production" ? "/portfolio-website" : "";
+
 export const PERSONAL_INFO = {
   name: "Nguyen Quang Sang",
   vietnameseName: "Nguyễn Quang Sáng",
@@ -49,9 +51,9 @@ export const PERSONAL_INFO = {
   location: "Ho Chi Minh City, Vietnam",
   github: "https://github.com/sang-ute",
   linkedin: "https://www.linkedin.com/in/sang-nguyen-quang-9946b6200/",
-  avatar: "/assets/profile.jpg",
+  avatar: `${basePath}/assets/profile.jpg`,
   avatarFallback: "https://avatars.githubusercontent.com/u/114816840?v=4",
-  resumePdf: "/assets/cv.pdf",
+  resumePdf: `${basePath}/assets/cv.pdf`,
   englishLevel: "IELTS 7.5 (Fluent)",
   summary:
     "Final-year Software Engineering student at HCMUTE with practical expertise in backend engineering, cloud architecture on AWS, and scalable microservices. Currently contributing to global SaaS platform Admina at Money Forward Vietnam.",

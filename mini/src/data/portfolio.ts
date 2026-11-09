@@ -50,9 +50,9 @@ export const PERSONAL_INFO = {
   phone: "0938 963 667",
   location: "Ho Chi Minh City, Vietnam",
   github: "https://github.com/sang-ute",
-  linkedin: "https://www.linkedin.com/in/sang-nguyen-quang-9946b6200/",
-  avatar: `${basePath}/assets/profile.jpg`,
-  avatarFallback: "https://avatars.githubusercontent.com/u/114816840?v=4",
+  linkedin: "https://www.linkedin.com/in/sang-n-9946b6200/",
+  heroBackground: `${basePath}/assets/profile-wide.jpg`,
+  introBackground: `${basePath}/assets/profile-portrait.jpg`,
   resumePdf: `${basePath}/assets/cv.pdf`,
   englishLevel: "IELTS 7.5 (Fluent)",
   summary:
@@ -104,19 +104,19 @@ export const EXPERIENCES: Experience[] = [
 export const PROJECTS: Project[] = [
   {
     title: "Vinabooking Platform",
-    tagline: "Accommodation Booking Microservices",
+    tagline: "Booking platform · microservices",
     description:
-      "Full-stack accommodation booking system built with a microservices API Gateway architecture. Key public contributions include booking services, email OTP auth, review system, owner accommodation management, payment integrations, and semantic search.",
+      "Contributed booking, OTP, reviews, payments, and semantic search to a microservices booking platform.",
     category: "web",
     categoryLabel: "Microservices & Web",
-    technologies: ["React", "TypeScript", "Node.js", "Express.js", "MySQL", "Prisma ORM", "gRPC", "Docker", "Vite"],
+    technologies: ["React", "TypeScript", "Node.js", "MySQL", "gRPC", "Docker"],
     githubUrl: "https://github.com/HLoc26/Vinabooking-New",
     secondaryUrl: "https://github.com/HLoc26/VinaBooking",
     secondaryLabel: "Legacy Repo",
     highlights: [
-      "Engineered microservices communication via gRPC and unified API Gateway",
-      "Implemented email OTP authentication, owner dashboard, and review pipelines",
-      "Dockerized microservices environment with MySQL and Prisma ORM",
+      "Built booking, authentication, and review features",
+      "Connected services with gRPC and an API gateway",
+      "Containerized services with Docker and MySQL",
     ],
     badge: "Flagship",
   },

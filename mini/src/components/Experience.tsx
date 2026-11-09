@@ -29,7 +29,7 @@ export function Experience() {
                 {/* Left Card */}
                 {isLeft ? (
                   <>
-                    <div className="ml-12 md:ml-0 md:w-1/2 md:pr-10 w-full">
+                    <div className="ml-12 w-[calc(100%-3rem)] md:ml-0 md:w-1/2 md:pr-10">
                       <div className="glass-card p-6 rounded-2xl relative">
                         <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                           <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-300">
@@ -68,7 +68,7 @@ export function Experience() {
                 ) : (
                   <>
                     <div className="hidden md:block md:w-1/2" />
-                    <div className="ml-12 md:ml-0 md:w-1/2 md:pl-10 w-full">
+                    <div className="ml-12 w-[calc(100%-3rem)] md:ml-0 md:w-1/2 md:pl-10">
                       <div className="glass-card p-6 rounded-2xl relative">
                         <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                           <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-100 text-indigo-800 dark:bg-indigo-900/60 dark:text-indigo-300">

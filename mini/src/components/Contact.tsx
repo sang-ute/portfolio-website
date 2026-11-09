@@ -122,7 +122,7 @@ export function Contact({ onNotify }: ContactProps) {
                 <div>
                   <div className="text-xs text-slate-500 dark:text-slate-400">LinkedIn Profile</div>
                   <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-slate-800 dark:text-slate-100 hover:text-blue-600">
-                    linkedin.com/in/sang-nguyen-quang
+                    linkedin.com/in/sang-n-9946b6200
                   </a>
                 </div>
               </div>

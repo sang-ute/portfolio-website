@@ -8,17 +8,17 @@ export function Skills() {
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case "code":
-        return <Code className="w-5 h-5 text-blue-600 dark:text-blue-400" />;
+        return <Code className="w-5 h-5 text-[var(--fg)]" />;
       case "layers":
-        return <Layers className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />;
+        return <Layers className="w-5 h-5 text-[var(--fg)]" />;
       case "cloud":
-        return <CloudLightning className="w-5 h-5 text-amber-600 dark:text-amber-400" />;
+        return <CloudLightning className="w-5 h-5 text-[var(--fg)]" />;
       case "database":
-        return <Database className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />;
+        return <Database className="w-5 h-5 text-[var(--fg)]" />;
       case "wrench":
-        return <Wrench className="w-5 h-5 text-purple-600 dark:text-purple-400" />;
+        return <Wrench className="w-5 h-5 text-[var(--fg)]" />;
       case "users":
-        return <Users className="w-5 h-5 text-pink-600 dark:text-pink-400" />;
+        return <Users className="w-5 h-5 text-[var(--fg)]" />;
       default:
         return <Code className="w-5 h-5" />;
     }
@@ -38,7 +38,7 @@ export function Skills() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {SKILL_CATEGORIES.map((cat, idx) => (
-            <div key={idx} className="glass-card rounded-2xl p-6">
+            <div key={idx} className="glass-card rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900">
                   {getIcon(cat.icon)}
@@ -49,7 +49,7 @@ export function Skills() {
                 {cat.skills.map((skill, sIdx) => (
                   <span
                     key={sIdx}
-                    className="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 font-semibold border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-colors"
+                    className="rounded-lg border border-slate-200 bg-white/80 px-3 py-1.5 font-semibold text-slate-700 transition-colors hover:border-blue-500 dark:border-slate-700 dark:bg-slate-800/80 dark:text-slate-300"
                   >
                     {skill}
                   </span>

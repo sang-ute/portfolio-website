@@ -16,7 +16,7 @@ export function Metrics() {
               "text-pink-600 dark:text-pink-400",
             ];
             return (
-              <div key={idx} className="p-4 rounded-xl glass-card">
+              <div key={idx} className="glass-card rounded-xl p-4 transition-transform duration-300 hover:-translate-y-1">
                 <div className={`text-3xl font-extrabold ${colors[idx % colors.length]}`}>
                   {metric.value}
                 </div>

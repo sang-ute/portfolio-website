@@ -6,7 +6,6 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Metrics } from "@/components/Metrics";
 import { About } from "@/components/About";
-import { ArchitectureGraph } from "@/components/ArchitectureGraph";
 import { Experience } from "@/components/Experience";
 import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
@@ -18,6 +17,7 @@ import { Reveal } from "@/components/Reveal";
 import { SplashIntro } from "@/components/SplashIntro";
 import { CustomCursor } from "@/components/CustomCursor";
 import { AmbientMesh } from "@/components/AmbientMesh";
+import { GlassSunbeamScroll } from "@/components/GlassSunbeamScroll";
 
 export default function Home() {
   const [resumeOpen, setResumeOpen] = useState(false);
@@ -31,9 +31,10 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-[var(--bg)] text-[var(--fg)] transition-colors duration-300">
-      {/* Ambient & cursor layers */}
+      {/* Ambient glass, sunbeam & cursor layers */}
       <CustomCursor />
       <AmbientMesh />
+      <GlassSunbeamScroll />
 
       {/* Splash intro */}
       <SplashIntro replayKey={introReplayKey} />
@@ -52,17 +53,16 @@ export default function Home() {
         onReplayIntro={() => setIntroReplayKey((k) => k + 1)}
       />
 
-      {/* Main content */}
+      {/* Main content with SEO-compliant staggered scroll reveals */}
       <main className="relative z-10">
         <Hero />
         <Reveal><Metrics /></Reveal>
-        <Reveal delay={0.04}><About onOpenResume={() => setResumeOpen(true)} /></Reveal>
-        <Reveal><ArchitectureGraph /></Reveal>
-        <Reveal><Experience /></Reveal>
-        <Reveal delay={0.04}><Projects /></Reveal>
-        <Reveal><Skills /></Reveal>
-        <Reveal delay={0.04}><Education /></Reveal>
-        <Reveal><Contact onNotify={showToast} /></Reveal>
+        <Reveal delay={0.05}><About onOpenResume={() => setResumeOpen(true)} /></Reveal>
+        <Reveal delay={0.05}><Experience /></Reveal>
+        <Reveal delay={0.05}><Projects /></Reveal>
+        <Reveal delay={0.05}><Skills /></Reveal>
+        <Reveal delay={0.05}><Education /></Reveal>
+        <Reveal delay={0.05}><Contact onNotify={showToast} /></Reveal>
       </main>
 
       {/* Footer */}

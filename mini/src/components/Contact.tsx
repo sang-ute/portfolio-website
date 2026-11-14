@@ -47,7 +47,7 @@ export function Contact({ onNotify }: ContactProps) {
         {/* Section header */}
         <div className="mb-12 flex items-center justify-between border-b border-[var(--line)] pb-4">
           <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--mut)] sm:text-xs">
-            07 / Contact
+            06 / Contact
           </p>
           <p className="hidden font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--mut)] sm:block">
             Get in touch

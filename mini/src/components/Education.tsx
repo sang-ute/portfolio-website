@@ -13,7 +13,7 @@ export function Education() {
         {/* Section header */}
         <div className="mb-12 flex items-center justify-between border-b border-[var(--line)] pb-4">
           <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--mut)] sm:text-xs">
-            06 / Education
+            05 / Education &amp; Certs
           </p>
           <p className="hidden font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--mut)] sm:block">
             Credentials &amp; qualifications

@@ -33,7 +33,7 @@ export function Skills() {
         {/* Section header */}
         <div className="mb-12 flex items-center justify-between border-b border-[var(--line)] pb-4">
           <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--mut)] sm:text-xs">
-            05 / Stack &amp; Competencies
+            04 / Stack &amp; Competencies
           </p>
           <p className="hidden font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--mut)] sm:block">
             Frameworks, Cloud &amp; Engineering Metrics

@@ -95,9 +95,9 @@ export function Projects() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col gap-7 md:mb-14 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <p className="mb-3 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-[var(--mut)]">
+            <p className="mb-3 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-[var(--mut)]">
               <Layers3 className="h-4 w-4 text-[var(--fg)]" />
-              Selected work
+              03 / Selected work
             </p>
             <h2 className="text-4xl font-semibold tracking-[-0.07em] text-[var(--fg)] sm:text-6xl">
               Built to work.

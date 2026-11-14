@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowUpRight,
   Brain,
@@ -102,7 +103,7 @@ export function Projects() {
               Built to work.
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-6 text-[var(--mut)] sm:text-base">
-              Backend, cloud, and product work.
+              Backend systems, cloud infrastructure on AWS, microservices, and distributed architectures.
             </p>
           </div>
           <a
@@ -116,6 +117,7 @@ export function Projects() {
           </a>
         </div>
 
+        {/* Category Filters */}
         <div className="mb-8 flex gap-2 overflow-x-auto pb-2" aria-label="Filter projects">
           {filterTabs.map((tab) => {
             const isActive = activeFilter === tab.id;
@@ -125,9 +127,9 @@ export function Projects() {
                 type="button"
                 onClick={() => setActiveFilter(tab.id)}
                 aria-pressed={isActive}
-                className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium transition ${
+                className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium transition-all duration-300 ${
                   isActive
-                    ? "border-[var(--fg)] bg-[var(--spot)] text-[var(--fg)]"
+                    ? "border-[var(--fg)] bg-[var(--spot)] text-[var(--fg)] shadow-sm"
                     : "border-[var(--line)] text-[var(--mut)] hover:border-[var(--mut)] hover:text-[var(--fg)]"
                 }`}
               >
@@ -138,107 +140,121 @@ export function Projects() {
           })}
         </div>
 
-        <div className="grid grid-cols-1 items-start gap-5 md:grid-cols-2">
-          {filteredProjects.map((project) => {
-            return (
-              <article
+        {/* Projects Grid: items-stretch for identical height across rows */}
+        <motion.div layout className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
+              <motion.article
+                layout
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 key={project.title}
-                className="editorial-card group flex flex-col self-start rounded-2xl p-5 sm:p-7"
+                className="editorial-card group flex flex-col justify-between h-full rounded-2xl p-6 sm:p-7 relative overflow-hidden"
               >
-                  <div className="flex flex-col">
-                    <div className="flex flex-col">
-                      <div className="mb-6 flex items-center justify-between">
-                        <div className="grid h-11 w-11 place-items-center rounded-xl border border-[var(--line)] bg-[var(--spot)] text-[var(--fg)]">
-                          <ProjectMark category={project.category} />
-                        </div>
-                        <div className="flex items-center gap-2">
-                          {project.badge && (
-                            <span className="rounded-full border border-[var(--line)] bg-[var(--spot)] px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-[var(--fg)]">
-                              {project.badge}
-                            </span>
-                          )}
-                          {project.githubUrl && (
-                            <a
-                              href={project.githubUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`Open ${project.title} on GitHub`}
-                              className="grid h-9 w-9 place-items-center rounded-full border border-[var(--line)] text-[var(--mut)] transition hover:border-[var(--fg)] hover:text-[var(--fg)]"
-                            >
-                              <Github className="h-4 w-4" />
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                      <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--mut)]">
-                        {project.categoryLabel}
-                      </p>
-                      <h3 className="text-2xl font-semibold leading-tight tracking-[-0.06em] text-[var(--fg)] sm:text-3xl">
-                        {project.title}
-                      </h3>
-                      <p className="mt-2 text-sm font-medium text-[var(--fg)]">{project.tagline}</p>
-                      <p className="mt-3 text-sm leading-6 text-[var(--mut)]">
-                        {project.description}
-                      </p>
-
-                      <div className="mt-6 flex flex-wrap gap-2">
-                        {project.technologies.map((technology) => (
-                          <span
-                            key={technology}
-                            className="inline-flex items-center gap-1.5 rounded-md border border-[var(--line)] bg-[var(--spot)] px-2.5 py-1 font-mono text-[10px] text-[var(--fg)] transition hover:border-[var(--mut)]"
-                          >
-                            <TechLogo name={technology} className="h-3 w-3 shrink-0" />
-                            {technology}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-[var(--line)] pt-4">
-                        {project.githubUrl && (
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--fg)] transition-opacity hover:opacity-65"
-                          >
-                            View project
-                            <ArrowUpRight className="h-3.5 w-3.5" />
-                          </a>
-                        )}
-                        {project.secondaryUrl && (
-                          <a
-                            href={project.secondaryUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-xs text-[var(--mut)] transition hover:text-[var(--fg)]"
-                          >
-                            {project.secondaryLabel || "Related project"} ↗
-                          </a>
-                        )}
-                      </div>
+                {/* Upper Content: flex-1 ensures the footer parts stay locked to the bottom */}
+                <div className="relative z-10 flex flex-col flex-1">
+                  {/* Top Bar: Icon + Badge + GitHub */}
+                  <div className="mb-6 flex items-center justify-between">
+                    <div className="grid h-11 w-11 place-items-center rounded-xl border border-[var(--line)] bg-[var(--spot)] text-[var(--fg)] transition-transform duration-300 group-hover:scale-105">
+                      <ProjectMark category={project.category} />
                     </div>
-
-                    <div className="mt-5 border-t border-[var(--line)] pt-4">
-                      <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--mut)]">
-                        Highlights
-                      </p>
-                      <ul className="grid gap-2 sm:grid-cols-2">
-                        {project.highlights.slice(0, 2).map((highlight) => (
-                          <li
-                            key={highlight}
-                            className="flex gap-2 text-xs leading-5 text-[var(--mut)] sm:text-sm"
-                          >
-                            <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--fg)]" />
-                            <span>{highlight}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="flex items-center gap-2">
+                      {project.badge && (
+                        <span className="rounded-full border border-[var(--line)] bg-[var(--spot)] px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-[var(--fg)] shadow-sm">
+                          {project.badge}
+                        </span>
+                      )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Open ${project.title} on GitHub`}
+                          className="grid h-9 w-9 place-items-center rounded-full border border-[var(--line)] text-[var(--mut)] transition-all duration-200 hover:border-[var(--fg)] hover:text-[var(--fg)] hover:scale-110"
+                        >
+                          <Github className="h-4 w-4" />
+                        </a>
+                      )}
                     </div>
                   </div>
-              </article>
-            );
-          })}
-        </div>
+
+                  {/* Category & Title */}
+                  <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--mut)]">
+                    {project.categoryLabel}
+                  </p>
+                  <h3 className="text-2xl font-semibold leading-tight tracking-[-0.05em] text-[var(--fg)] sm:text-3xl">
+                    {project.title}
+                  </h3>
+                  <p className="mt-2 text-sm font-medium text-[var(--fg)] opacity-90">
+                    {project.tagline}
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-[var(--mut)]">
+                    {project.description}
+                  </p>
+
+                  {/* Tech stack chips */}
+                  <div className="mt-6 flex flex-wrap gap-2 pb-6">
+                    {project.technologies.map((technology) => (
+                      <span
+                        key={technology}
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--line)] bg-[var(--spot)] px-2.5 py-1 font-mono text-[11px] text-[var(--fg)] transition-all duration-200 hover:border-[var(--mut)]"
+                      >
+                        <TechLogo name={technology} className="h-3.5 w-3.5 shrink-0" />
+                        {technology}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom Section: Links & Architecture Highlights */}
+                <div className="relative z-10 mt-auto border-t border-[var(--line)] pt-4">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--fg)] transition-opacity hover:opacity-70"
+                      >
+                        View project
+                        <ArrowUpRight className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                    {project.secondaryUrl && (
+                      <a
+                        href={project.secondaryUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-[var(--mut)] transition hover:text-[var(--fg)]"
+                      >
+                        {project.secondaryLabel || "Related project"} ↗
+                      </a>
+                    )}
+                  </div>
+
+                  <div className="mt-4 border-t border-[var(--line)]/60 pt-3">
+                    <p className="mb-2.5 font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--mut)]">
+                      Highlights
+                    </p>
+                    <ul className="grid gap-2 sm:grid-cols-2">
+                      {project.highlights.slice(0, 2).map((highlight) => (
+                        <li
+                          key={highlight}
+                          className="flex gap-2 text-xs leading-relaxed text-[var(--mut)]"
+                        >
+                          <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[var(--fg)]" />
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );

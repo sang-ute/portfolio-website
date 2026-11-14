@@ -6,6 +6,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Metrics } from "@/components/Metrics";
 import { About } from "@/components/About";
+import { ArchitectureGraph } from "@/components/ArchitectureGraph";
 import { Experience } from "@/components/Experience";
 import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
@@ -56,6 +57,7 @@ export default function Home() {
         <Hero />
         <Reveal><Metrics /></Reveal>
         <Reveal delay={0.04}><About onOpenResume={() => setResumeOpen(true)} /></Reveal>
+        <Reveal><ArchitectureGraph /></Reveal>
         <Reveal><Experience /></Reveal>
         <Reveal delay={0.04}><Projects /></Reveal>
         <Reveal><Skills /></Reveal>

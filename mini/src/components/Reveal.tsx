@@ -15,10 +15,10 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
   return (
     <motion.div
       className={className}
-      initial={reduceMotion ? false : { opacity: 0 }}
-      whileInView={reduceMotion ? undefined : { opacity: 1 }}
-      viewport={{ once: true, amount: 0.12 }}
-      transition={{ duration: 0.35, delay, ease: "easeOut" }}
+      initial={reduceMotion ? false : { opacity: 0, y: 26, filter: "blur(4px)" }}
+      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, amount: 0.08 }}
+      transition={{ duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>

@@ -104,9 +104,9 @@ export const EXPERIENCES: Experience[] = [
 export const PROJECTS: Project[] = [
   {
     title: "Vinabooking Platform",
-    tagline: "Booking platform · microservices",
+    tagline: "High-Concurrency Booking & Microservices",
     description:
-      "Contributed booking, OTP, reviews, payments, and semantic search to a microservices booking platform.",
+      "Enterprise-grade hospitality and booking ecosystem powered by microservices architecture. Features distributed authentication with OTP, review processing, transactional booking pipelines, and inter-service communication via high-speed gRPC.",
     category: "web",
     categoryLabel: "Microservices & Web",
     technologies: ["React", "TypeScript", "Node.js", "MySQL", "gRPC", "Docker"],

@@ -28,6 +28,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { PROJECTS, Project } from "@/data/portfolio";
+import { TechLogo } from "./TechLogos";
 
 const filterTabs: {
   id: Project["category"];
@@ -184,9 +185,9 @@ export function Projects() {
                         {project.technologies.map((technology) => (
                           <span
                             key={technology}
-                            className="inline-flex items-center gap-1.5 rounded-md border border-[var(--line)] bg-[var(--spot)] px-2.5 py-1 font-mono text-[10px] text-[var(--mut)]"
+                            className="inline-flex items-center gap-1.5 rounded-md border border-[var(--line)] bg-[var(--spot)] px-2.5 py-1 font-mono text-[10px] text-[var(--fg)] transition hover:border-[var(--mut)]"
                           >
-                            <TechnologyMark technology={technology} />
+                            <TechLogo name={technology} className="h-3 w-3 shrink-0" />
                             {technology}
                           </span>
                         ))}

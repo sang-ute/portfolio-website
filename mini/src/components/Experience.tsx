@@ -1,112 +1,111 @@
 "use client";
 
 import React from "react";
-import { Briefcase, Cloud } from "lucide-react";
+import { Briefcase } from "lucide-react";
 import { EXPERIENCES } from "@/data/portfolio";
 
 export function Experience() {
   return (
-    <section id="experience" className="py-20 bg-slate-100/60 dark:bg-slate-900/30 border-y border-slate-200/70 dark:border-slate-800/70">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-2">
-            Track Record
-          </h2>
-          <p className="text-3xl sm:text-4xl font-extrabold tracking-tight">Work & Industry Experience</p>
-          <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4 rounded-full" />
+    <section id="experience" className="px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
+      <div className="mx-auto max-w-[1440px]">
+        {/* Section header */}
+        <div className="mb-12 flex items-center justify-between border-b border-[var(--line)] pb-4">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--mut)] sm:text-xs">
+            02 / Experience
+          </p>
+          <p className="hidden font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--mut)] sm:block">
+            Industry track record
+          </p>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-8 relative before:absolute before:inset-0 before:left-5 md:before:left-1/2 before:w-0.5 before:bg-slate-300 dark:before:bg-slate-800 before:-translate-x-1/2">
-          {EXPERIENCES.map((exp, idx) => {
-            const isLeft = idx % 2 === 0;
-            return (
-              <div key={idx} className="relative flex flex-col md:flex-row items-start group">
-                {/* Timeline Marker */}
-                <div className="absolute left-5 md:left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-blue-600 border-4 border-slate-50 dark:border-slate-950 flex items-center justify-center text-white shadow-md z-10">
-                  {idx === 0 ? <Briefcase className="w-4 h-4" /> : <Cloud className="w-4 h-4" />}
+        <div className="mb-10 max-w-2xl">
+          <h2 className="text-4xl font-medium leading-[1.08] tracking-[-0.06em] text-[var(--fg)] sm:text-5xl lg:text-6xl">
+            Work &amp;{" "}
+            <span className="text-[var(--mut)]">industry.</span>
+          </h2>
+        </div>
+
+        {/* Timeline */}
+        <div className="relative space-y-0">
+          {/* Vertical spine */}
+          <div
+            aria-hidden="true"
+            className="absolute left-0 top-0 h-full w-px bg-[var(--line)] hidden sm:block"
+          />
+
+          {EXPERIENCES.map((exp, idx) => (
+            <div
+              key={idx}
+              className="group relative sm:pl-8"
+            >
+              {/* Dot on spine */}
+              <div
+                aria-hidden="true"
+                className="absolute left-[-4.5px] top-6 hidden h-2.5 w-2.5 rounded-full border border-[var(--fg)] bg-[var(--bg)] sm:block transition-colors group-hover:bg-[var(--fg)]"
+              />
+
+              <div className="border-b border-[var(--line)] py-10 last:border-0">
+                {/* Meta row */}
+                <div className="mb-5 flex flex-wrap items-center gap-x-4 gap-y-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--mut)]">
+                  <span className="inline-flex items-center gap-2">
+                    <Briefcase className="h-3 w-3" />
+                    {exp.type}
+                  </span>
+                  <span aria-hidden="true" className="text-[var(--line)]">
+                    /
+                  </span>
+                  <span>{exp.period}</span>
+                  <span aria-hidden="true" className="text-[var(--line)]">
+                    /
+                  </span>
+                  <span>{exp.location}</span>
                 </div>
 
-                {/* Left Card */}
-                {isLeft ? (
-                  <>
-                    <div className="ml-12 w-[calc(100%-3rem)] md:ml-0 md:w-1/2 md:pr-10">
-                      <div className="glass-card p-6 rounded-2xl relative">
-                        <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                          <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-300">
-                            {exp.period}
-                          </span>
-                          <span className="text-xs text-slate-500 dark:text-slate-400">{exp.location}</span>
-                        </div>
+                {/* Role & company */}
+                <h3 className="text-xl font-semibold tracking-[-0.04em] text-[var(--fg)] sm:text-2xl">
+                  {exp.role}
+                </h3>
+                <p className="mt-1 text-sm font-medium text-[var(--mut)]">
+                  {exp.company}
+                </p>
 
-                        <h3 className="text-lg font-bold text-slate-900 dark:text-white">{exp.role}</h3>
-                        <h4 className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-3">{exp.company}</h4>
+                {/* Description */}
+                <p className="mt-4 max-w-3xl text-sm leading-7 text-[var(--mut)]">
+                  {exp.description}
+                </p>
 
-                        <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-                          {exp.description}
-                        </p>
-
-                        <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-2 list-disc list-inside mb-4">
-                          {exp.responsibilities.map((resp, rIdx) => (
-                            <li key={rIdx}>{resp}</li>
-                          ))}
-                        </ul>
-
-                        <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
-                          {exp.skills.map((skill, sIdx) => (
-                            <span
-                              key={sIdx}
-                              className="text-xs px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="hidden md:block md:w-1/2" />
-                  </>
-                ) : (
-                  <>
-                    <div className="hidden md:block md:w-1/2" />
-                    <div className="ml-12 w-[calc(100%-3rem)] md:ml-0 md:w-1/2 md:pl-10">
-                      <div className="glass-card p-6 rounded-2xl relative">
-                        <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                          <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-100 text-indigo-800 dark:bg-indigo-900/60 dark:text-indigo-300">
-                            {exp.period}
-                          </span>
-                          <span className="text-xs text-slate-500 dark:text-slate-400">{exp.type}</span>
-                        </div>
-
-                        <h3 className="text-lg font-bold text-slate-900 dark:text-white">{exp.role}</h3>
-                        <h4 className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 mb-3">{exp.company}</h4>
-
-                        <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-                          {exp.description}
-                        </p>
-
-                        <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-2 list-disc list-inside mb-4">
-                          {exp.responsibilities.map((resp, rIdx) => (
-                            <li key={rIdx}>{resp}</li>
-                          ))}
-                        </ul>
-
-                        <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
-                          {exp.skills.map((skill, sIdx) => (
-                            <span
-                              key={sIdx}
-                              className="text-xs px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </>
+                {/* Responsibilities */}
+                {exp.responsibilities.length > 0 && (
+                  <ul className="mt-4 max-w-3xl space-y-2">
+                    {exp.responsibilities.map((r, rIdx) => (
+                      <li
+                        key={rIdx}
+                        className="flex gap-3 text-sm leading-6 text-[var(--mut)]"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[var(--mut)]"
+                        />
+                        {r}
+                      </li>
+                    ))}
+                  </ul>
                 )}
+
+                {/* Tech chips */}
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {exp.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="rounded-full border border-[var(--line)] bg-[var(--card)] px-3 py-1 font-mono text-[10px] text-[var(--mut)] transition hover:border-[var(--mut)] hover:text-[var(--fg)]"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>

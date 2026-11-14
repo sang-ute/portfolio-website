@@ -8,102 +8,118 @@ export function Education() {
   const edu = EDUCATIONS[0];
 
   return (
-    <section id="education" className="py-20 md:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-2">
-            Qualifications
-          </h2>
-          <p className="text-3xl sm:text-4xl font-extrabold tracking-tight">Education & Certifications</p>
-          <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4 rounded-full" />
+    <section id="education" className="px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
+      <div className="mx-auto max-w-[1440px]">
+        {/* Section header */}
+        <div className="mb-12 flex items-center justify-between border-b border-[var(--line)] pb-4">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--mut)] sm:text-xs">
+            06 / Education
+          </p>
+          <p className="hidden font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--mut)] sm:block">
+            Credentials &amp; qualifications
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          
-          {/* Education Card */}
-          <div className="lg:col-span-6 glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden">
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl pointer-events-none" />
+        <div className="mb-10 max-w-2xl">
+          <h2 className="text-4xl font-medium leading-[1.08] tracking-[-0.06em] text-[var(--fg)] sm:text-5xl lg:text-6xl">
+            Education &amp;{" "}
+            <span className="text-[var(--mut)]">certs.</span>
+          </h2>
+        </div>
 
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="p-3 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400">
-                <GraduationCap className="w-6 h-6" />
-              </div>
+        <div className="grid gap-6 lg:grid-cols-2">
+          {/* Education card */}
+          <div className="editorial-card rounded-2xl p-6 sm:p-8">
+            <div className="mb-6 flex items-center gap-3 border-b border-[var(--line)] pb-5">
+              <span className="grid h-10 w-10 place-items-center rounded-xl border border-[var(--line)] bg-[var(--spot)] text-[var(--fg)]">
+                <GraduationCap className="h-5 w-5" />
+              </span>
               <div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">University Education</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Undergraduate Degree</p>
+                <h3 className="text-sm font-semibold text-[var(--fg)]">
+                  University Education
+                </h3>
+                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--mut)]">
+                  Undergraduate degree
+                </p>
               </div>
             </div>
 
             <div className="space-y-4">
-              <div className="flex justify-between items-start">
+              <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h4 className="text-base font-bold text-slate-800 dark:text-slate-100">{edu.institution}</h4>
-                  <p className="text-sm font-medium text-blue-600 dark:text-blue-400">{edu.degree}</p>
+                  <h4 className="text-base font-semibold tracking-tight text-[var(--fg)]">
+                    {edu.institution}
+                  </h4>
+                  <p className="mt-0.5 text-sm text-[var(--mut)]">{edu.degree}</p>
                 </div>
-                <span className="text-xs font-semibold px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                <span className="shrink-0 rounded-full border border-[var(--line)] px-2.5 py-1 font-mono text-[10px] text-[var(--mut)]">
                   {edu.period}
                 </span>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2">
-                <div className="flex justify-between text-xs">
-                  <span className="text-slate-500 dark:text-slate-400">Cumulative GPA:</span>
-                  <span className="font-bold text-slate-900 dark:text-white">{edu.gpa}</span>
-                </div>
-                <div className="flex justify-between text-xs">
-                  <span className="text-slate-500 dark:text-slate-400">Academic Cohort:</span>
-                  <span className="font-medium text-slate-900 dark:text-slate-200">{edu.classGroup}</span>
-                </div>
-                <div className="flex justify-between text-xs">
-                  <span className="text-slate-500 dark:text-slate-400">Specialization:</span>
-                  <span className="font-medium text-slate-900 dark:text-slate-200">
-                    Microservices, Cloud, DBMS, OS, Data Structures & Algorithms
-                  </span>
-                </div>
+              <div className="rounded-xl border border-[var(--line)] bg-[var(--card)] p-4 space-y-2.5">
+                {[
+                  { label: "Cumulative GPA", value: edu.gpa },
+                  { label: "Academic cohort", value: edu.classGroup },
+                  {
+                    label: "Specialization",
+                    value: "Microservices · Cloud · DBMS · OS · DSA",
+                  },
+                ].map((row) => (
+                  <div key={row.label} className="flex justify-between gap-4 text-xs">
+                    <span className="text-[var(--mut)]">{row.label}</span>
+                    <span className="font-medium text-[var(--fg)] text-right">
+                      {row.value}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Certifications Card */}
-          <div className="lg:col-span-6 glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden">
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
-
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="p-3 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400">
-                <Award className="w-6 h-6" />
-              </div>
+          {/* Certifications card */}
+          <div className="editorial-card rounded-2xl p-6 sm:p-8">
+            <div className="mb-6 flex items-center gap-3 border-b border-[var(--line)] pb-5">
+              <span className="grid h-10 w-10 place-items-center rounded-xl border border-[var(--line)] bg-[var(--spot)] text-[var(--fg)]">
+                <Award className="h-5 w-5" />
+              </span>
               <div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Professional Certifications</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Industry & Language Credentials</p>
+                <h3 className="text-sm font-semibold text-[var(--fg)]">
+                  Certifications
+                </h3>
+                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--mut)]">
+                  Industry &amp; language credentials
+                </p>
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {CERTIFICATIONS.map((cert, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between"
+                  className="flex items-center justify-between gap-4 rounded-xl border border-[var(--line)] px-4 py-3 transition-colors hover:bg-[var(--card)]"
                 >
-                  <div className="flex items-center space-x-3">
-                    <div className="w-9 h-9 rounded-lg bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-xs">
+                  <div className="flex items-center gap-3">
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[var(--line)] bg-[var(--spot)] font-mono text-xs font-bold text-[var(--fg)]">
                       {cert.badge}
-                    </div>
+                    </span>
                     <div>
-                      <h5 className="text-sm font-bold text-slate-800 dark:text-slate-100">{cert.name}</h5>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">{cert.issuer}</p>
+                      <p className="text-sm font-medium text-[var(--fg)]">
+                        {cert.name}
+                      </p>
+                      <p className="font-mono text-[10px] text-[var(--mut)]">
+                        {cert.issuer}
+                      </p>
                     </div>
                   </div>
-                  <span className="text-xs font-semibold px-2.5 py-1 rounded bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
+                  <span className="shrink-0 rounded-full border border-[var(--line)] px-2.5 py-1 font-mono text-[10px] text-[var(--mut)]">
                     {cert.type}
                   </span>
                 </div>
               ))}
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );

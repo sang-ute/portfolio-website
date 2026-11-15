@@ -153,22 +153,6 @@ a {
   isolation: isolate;
 }
 
-.hero-photo {
-  opacity: 0.42;
-}
-
-.intro-photo {
-  opacity: 0.16;
-}
-
-[data-theme="light"] .hero-photo {
-  opacity: 0.22;
-}
-
-[data-theme="light"] .intro-photo {
-  opacity: 0.09;
-}
-
 .intro-grain {
   z-index: -1;
   opacity: 0.18;

@@ -14,18 +14,12 @@ export function Hero() {
       id="hero"
       className="hero-stage relative isolate flex min-h-[min(900px,100svh)] items-end overflow-hidden px-5 pb-12 pt-32 sm:px-8 sm:pb-16 lg:min-h-[850px] lg:px-12"
     >
-      <div
-        aria-hidden="true"
-        className="hero-photo pointer-events-none absolute inset-0 -z-20 bg-cover bg-[center_36%] grayscale"
-        style={{ backgroundImage: `url("${PERSONAL_INFO.heroBackground}")` }}
-      />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-[var(--bg)] via-[var(--bg)]/85 to-[var(--bg)]/20" />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/30 to-[var(--bg)]/10" />
       <div className="hero-grid pointer-events-none absolute inset-0 -z-20" />
       <div className="hero-halo pointer-events-none absolute inset-0 -z-10" />
       <SystemIllustration className="pointer-events-none absolute right-[-9rem] top-[12%] -z-10 h-[min(72vw,42rem)] w-[min(72vw,42rem)] text-[var(--fg)] opacity-15 sm:right-[-5rem] sm:top-[7%] sm:opacity-20 lg:right-[3%] lg:top-[8%]" />
 
       <div className="relative mx-auto w-full max-w-[1440px]">
+        <div className="grid items-end gap-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -44,6 +38,7 @@ export function Hero() {
           </div>
 
           <h1 className="max-w-5xl text-[clamp(3.5rem,10vw,9rem)] font-medium leading-[0.88] tracking-[-0.085em] text-[var(--fg)]">
+            <span className="sr-only">Nguyen Quang Sang, Software Engineer: </span>
             Software,
             <br />
             <span className="hero-title-second">engineered to</span>
@@ -106,6 +101,33 @@ export function Hero() {
             </a>
           </div>
         </motion.div>
+
+        <motion.figure
+          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mx-auto w-full max-w-[18rem] sm:max-w-[20rem] lg:mx-0 lg:w-[22rem] lg:max-w-none xl:w-[24rem]"
+        >
+          <div className="overflow-hidden rounded-[1.75rem] border border-[var(--glass-rim)] bg-[var(--spot)] p-1.5 shadow-2xl">
+            <picture>
+              <source srcSet={PERSONAL_INFO.portrait.webp} type="image/webp" />
+              <img
+                src={PERSONAL_INFO.portrait.jpg}
+                alt={PERSONAL_INFO.portrait.alt}
+                width={PERSONAL_INFO.portrait.width}
+                height={PERSONAL_INFO.portrait.height}
+                fetchPriority="high"
+                decoding="async"
+                className="block aspect-[4/5] h-auto w-full rounded-[1.4rem] object-cover saturate-[0.8] transition duration-500 hover:saturate-100"
+              />
+            </picture>
+          </div>
+          <figcaption className="mt-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--mut)] sm:text-[10px]">
+            <span>{PERSONAL_INFO.name}</span>
+            <span>HCMUTE / MFi</span>
+          </figcaption>
+        </motion.figure>
+        </div>
 
         <div className="mt-12 flex items-center justify-between border-t border-[var(--glass-edge)] pt-4 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--mut)] sm:text-[10px]">
           <span>Nguyen Quang Sang</span>

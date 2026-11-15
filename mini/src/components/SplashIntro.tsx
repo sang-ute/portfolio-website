@@ -43,11 +43,6 @@ export function SplashIntro({ replayKey }: { replayKey: number }) {
           transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] }}
           className="intro-screen fixed inset-0 z-[100] flex min-h-svh flex-col justify-between overflow-hidden bg-[var(--bg)] px-5 pb-6 pt-6 text-[var(--fg)] sm:px-8 sm:pb-8 sm:pt-8 lg:px-12"
         >
-          <div
-            aria-hidden="true"
-            className="intro-photo pointer-events-none absolute inset-0 z-0 bg-cover bg-[center_24%] grayscale"
-            style={{ backgroundImage: `url("${PERSONAL_INFO.introBackground}")` }}
-          />
           <div className="intro-grain pointer-events-none absolute inset-0" aria-hidden="true" />
           <SystemIllustration className="pointer-events-none absolute right-[-8rem] top-1/2 z-0 h-[min(70vw,34rem)] w-[min(70vw,34rem)] -translate-y-1/2 text-[var(--fg)] opacity-20 sm:right-[2%] sm:opacity-30" />
           <div className="relative z-10 flex items-center justify-between border-b border-[var(--glass-edge)] pb-4">
@@ -73,7 +68,7 @@ export function SplashIntro({ replayKey }: { replayKey: number }) {
             >
               Software engineer / Ho Chi Minh City, VN
             </motion.p>
-            <motion.h1
+            <motion.p
               initial={reduceMotion ? false : { opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -84,7 +79,7 @@ export function SplashIntro({ replayKey }: { replayKey: number }) {
               <span className="intro-outline">the systems</span>
               <br />
               behind it all.
-            </motion.h1>
+            </motion.p>
             <motion.div
               initial={reduceMotion ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}

@@ -18,6 +18,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const siteUrl = "https://sang-ute.github.io/portfolio-website";
+const pageUrl = `${siteUrl}/`;
+const ogImage = `${siteUrl}/assets/og-image.jpg`;
+const headshot = `${siteUrl}/assets/sang-headshot.jpg`;
 
 export const viewport: Viewport = {
   themeColor: [
@@ -66,28 +69,28 @@ export const metadata: Metadata = {
   creator: "Nguyen Quang Sang",
   publisher: "Nguyen Quang Sang",
   alternates: {
-    canonical: siteUrl,
+    canonical: pageUrl,
   },
+  applicationName: "Nguyen Quang Sang Portfolio",
+  formatDetection: { telephone: false, email: false, address: false },
   openGraph: {
     title: "Nguyen Quang Sang — Software Engineer | Backend & Cloud",
     description:
       "Software Engineer Intern at Money Forward Vietnam. Crafting scalable backend architectures, cloud systems on AWS, and high-performance microservices.",
-    url: siteUrl,
+    url: pageUrl,
     siteName: "Nguyen Quang Sang Portfolio",
     locale: "en_US",
     type: "profile",
+    firstName: "Sang",
+    lastName: "Nguyen",
+    username: "sang-ute",
     images: [
       {
-        url: `${siteUrl}/assets/profile-wide.jpg`,
+        url: ogImage,
         width: 1200,
         height: 630,
-        alt: "Nguyen Quang Sang — Software Engineer Portfolio",
-      },
-      {
-        url: `${siteUrl}/assets/profile-portrait.jpg`,
-        width: 800,
-        height: 800,
-        alt: "Nguyen Quang Sang Portrait",
+        type: "image/jpeg",
+        alt: "Nguyen Quang Sang, Software Engineer, smiling with arms crossed",
       },
     ],
   },
@@ -96,7 +99,7 @@ export const metadata: Metadata = {
     title: "Nguyen Quang Sang — Software Engineer",
     description:
       "Software Engineer Intern at Money Forward Vietnam. Software engineering, backend architecture, and AWS cloud systems.",
-    images: [`${siteUrl}/assets/profile-wide.jpg`],
+    images: [{ url: ogImage, alt: "Nguyen Quang Sang, Software Engineer" }],
   },
   robots: {
     index: true,
@@ -132,8 +135,16 @@ const jsonLd = {
         name: "HCMC University of Technology and Education (HCMUTE)",
         url: "https://hcmute.edu.vn",
       },
-      url: siteUrl,
-      image: `${siteUrl}/assets/profile-portrait.jpg`,
+      url: pageUrl,
+      image: {
+        "@type": "ImageObject",
+        "@id": `${siteUrl}/#personimage`,
+        url: headshot,
+        contentUrl: headshot,
+        width: 800,
+        height: 800,
+        caption: "Nguyen Quang Sang",
+      },
       email: "mailto:nqs28012004@gmail.com",
       telephone: "+84938963667",
       address: {
@@ -178,7 +189,7 @@ const jsonLd = {
     {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
-      url: siteUrl,
+      url: pageUrl,
       name: "Nguyen Quang Sang — Software Engineer Portfolio",
       description:
         "Official portfolio and engineering track record of Nguyen Quang Sang (Software Engineer Intern at Money Forward Vietnam).",
@@ -190,7 +201,9 @@ const jsonLd = {
     {
       "@type": "ProfilePage",
       "@id": `${siteUrl}/#profilepage`,
-      url: siteUrl,
+      url: pageUrl,
+      inLanguage: "en-US",
+      primaryImageOfPage: { "@id": `${siteUrl}/#personimage` },
       name: "Nguyen Quang Sang — Profile",
       isPartOf: {
         "@id": `${siteUrl}/#website`,

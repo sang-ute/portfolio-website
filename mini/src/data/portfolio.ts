@@ -51,8 +51,13 @@ export const PERSONAL_INFO = {
   location: "Ho Chi Minh City, Vietnam",
   github: "https://github.com/sang-ute",
   linkedin: "https://www.linkedin.com/in/sang-n-9946b6200/",
-  heroBackground: `${basePath}/assets/profile-wide.jpg`,
-  introBackground: `${basePath}/assets/profile-portrait.jpg`,
+  portrait: {
+    jpg: `${basePath}/assets/sang-portrait.jpg`,
+    webp: `${basePath}/assets/sang-portrait.webp`,
+    width: 960,
+    height: 1200,
+    alt: "Nguyen Quang Sang, Software Engineer Intern at Money Forward Vietnam, smiling with arms crossed",
+  },
   resumePdf: `${basePath}/assets/cv.pdf`,
   englishLevel: "IELTS 7.5 (Fluent)",
   summary:

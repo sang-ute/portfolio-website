@@ -1,21 +1,14 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import React from "react";
 import { ArrowUpRight, Github } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolio";
 
 export function Footer() {
   const year = new Date().getFullYear();
-  const ref = useRef<HTMLElement>(null);
-  const reduceMotion = useReducedMotion();
-  // Watermark rises into place as the footer scrolls into view.
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
-  const markY = useTransform(scrollYProgress, [0, 1], [reduceMotion ? "0%" : "45%", "0%"]);
-  const markOpacity = useTransform(scrollYProgress, [0, 0.6, 1], [reduceMotion ? 1 : 0, 0.6, 1]);
 
   return (
-    <footer ref={ref} className="relative z-10 overflow-hidden border-t border-[var(--line)]">
+    <footer className="relative z-10 border-t border-[var(--line)]">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
         {/* Top bar */}
         <div className="flex flex-col gap-6 py-10 sm:flex-row sm:items-center sm:justify-between">
@@ -46,18 +39,10 @@ export function Footer() {
           </nav>
         </div>
 
-        {/* Giant name watermark with a travelling light sweep */}
-        <div aria-hidden="true" className="pointer-events-none select-none overflow-hidden">
-          <motion.p style={{ y: markY, opacity: markOpacity }} className="footer-watermark">
-            Quang Sang
-          </motion.p>
-        </div>
-
         {/* Bottom bar */}
         <div className="flex flex-col gap-3 border-t border-[var(--line)] py-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-[var(--mut)]">
-            © {year} {PERSONAL_INFO.name}. Built with Next.js 14, TypeScript &amp;
-            Tailwind CSS.
+            © {year} {PERSONAL_INFO.name}
           </p>
 
           <div className="flex items-center gap-4">

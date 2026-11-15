@@ -33,8 +33,6 @@
   --tl-orb-core: #9fb3c8;
   --tl-ring: rgba(255, 255, 255, 0.12);
   --tl-glow: rgba(150, 200, 215, 0.35);
-  --wm-base: rgba(255, 255, 255, 0.05);
-  --wm-hi: rgba(255, 255, 255, 0.4);
   --liquid-border: rgba(255, 255, 255, 0.09);
   --liquid-border-hover: rgba(255, 255, 255, 0.22);
   --liquid-specular: rgba(255, 255, 255, 0.18);
@@ -100,8 +98,6 @@
   --tl-orb-core: #3b6f80;
   --tl-ring: rgba(29, 29, 31, 0.08);
   --tl-glow: rgba(70, 160, 180, 0.28);
-  --wm-base: rgba(29, 29, 31, 0.06);
-  --wm-hi: rgba(40, 125, 145, 0.45);
   --liquid-border: rgba(0, 0, 0, 0.08);
   --liquid-border-hover: rgba(0, 0, 0, 0.18);
   --liquid-specular: rgba(255, 255, 255, 0.95);
@@ -1044,8 +1040,8 @@ a {
 }
 
 .tl-card:not(.is-lit) {
-  opacity: 0.55;
-  filter: saturate(0.6);
+  opacity: 0.78;
+  filter: saturate(0.75);
 }
 
 .tl-card.is-lit::after {
@@ -1114,48 +1110,11 @@ a {
   margin-bottom: -0.12em;
 }
 
-/* --- Footer watermark with light sweep ----------------------------------- */
-.footer-watermark {
-  margin: 0;
-  padding-top: 0.05em;
-  font-size: clamp(4rem, 17.5vw, 17rem);
-  font-weight: 700;
-  line-height: 0.82;
-  letter-spacing: -0.075em;
-  white-space: nowrap;
-  text-align: center;
-  color: transparent;
-  background: linear-gradient(
-    100deg,
-    var(--wm-base) 0%,
-    var(--wm-base) 40%,
-    var(--wm-hi) 50%,
-    var(--wm-base) 60%,
-    var(--wm-base) 100%
-  );
-  background-size: 250% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: wmSweep 7s ease-in-out infinite;
-  will-change: transform, opacity;
-}
-
-@keyframes wmSweep {
-  0% {
-    background-position: 100% 0;
-  }
-  60%,
-  100% {
-    background-position: 0% 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .tl-orb::before,
   .tl-orb::after,
   .tl-halo,
-  .pulse-dot::after,
-  .footer-watermark {
+  .pulse-dot::after {
     animation: none !important;
   }
 }

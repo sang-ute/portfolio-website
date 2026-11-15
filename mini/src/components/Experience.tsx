@@ -18,12 +18,16 @@ import { Reveal } from "./Reveal";
  * rail as the list scrolls through the middle of the viewport, filling the
  * rail behind it and lighting up each role as it arrives. Fully reversible.
  */
+// Rail geometry (px): starts at the first node's centre (node top 28 + radius 7).
+const RAIL_TOP = 35;
+const RAIL_BOTTOM = 24;
+
 export function Experience() {
   const reduceMotion = useReducedMotion();
   const listRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [stops, setStops] = useState<number[]>([]);
-  const [active, setActive] = useState(-1);
+  const [active, setActive] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: listRef,
@@ -32,13 +36,14 @@ export function Experience() {
   const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 26, restDelta: 0.0005 });
   const orbTop = useTransform(progress, (v) => `${Math.min(Math.max(v, 0), 1) * 100}%`);
 
-  // Where each role's node sits along the rail, as a 0..1 fraction.
+  // Where each role's node sits along the rail, as a 0..1 fraction. The rail
+  // starts exactly at the first node, so the first role is lit from the start.
   useLayoutEffect(() => {
     const measure = () => {
       const list = listRef.current;
       if (!list) return;
-      const h = list.offsetHeight || 1;
-      setStops(itemRefs.current.map((el) => (el ? (el.offsetTop + 28) / h : 1)));
+      const railH = Math.max(list.offsetHeight - RAIL_TOP - RAIL_BOTTOM, 1);
+      setStops(itemRefs.current.map((el) => (el ? el.offsetTop / railH : 1)));
     };
     measure();
     const ro = new ResizeObserver(measure);
@@ -47,7 +52,7 @@ export function Experience() {
   }, []);
 
   useMotionValueEvent(progress, "change", (v) => {
-    let idx = -1;
+    let idx = 0;
     stops.forEach((s, i) => {
       if (v >= s - 0.01) idx = i;
     });
@@ -80,14 +85,24 @@ export function Experience() {
         {/* Timeline */}
         <div ref={listRef} className="relative pl-10 sm:pl-16 lg:pl-24">
           {/* Rail */}
-          <div aria-hidden="true" className="tl-rail absolute bottom-6 left-[11px] top-6 sm:left-[23px] lg:left-[39px]">
+          <div
+            aria-hidden="true"
+            className="tl-rail absolute left-[11px] sm:left-[23px] lg:left-[39px]"
+            style={{ top: RAIL_TOP, bottom: RAIL_BOTTOM }}
+          >
             <div className="tl-track" />
             <motion.div className="tl-fill" style={{ scaleY: reduceMotion ? 1 : progress }} />
             {!reduceMotion && (
-              <motion.div className="tl-orb-mover" style={{ top: orbTop }}>
-                <span className="tl-halo" />
-                <span className="tl-orb" />
-              </motion.div>
+              <>
+                {/* Halo stays beneath the cards... */}
+                <motion.div className="tl-orb-mover" style={{ top: orbTop }}>
+                  <span className="tl-halo" />
+                </motion.div>
+                {/* ...while the orb rides above the rail nodes. */}
+                <motion.div className="tl-orb-mover z-[5]" style={{ top: orbTop }}>
+                  <span className="tl-orb" />
+                </motion.div>
+              </>
             )}
           </div>
 

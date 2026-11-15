@@ -6,7 +6,6 @@ import {
   useMotionValueEvent,
   useReducedMotion,
   useScroll,
-  useSpring,
   useTransform,
 } from "framer-motion";
 import { Briefcase, MapPin, Calendar, CheckCircle2 } from "lucide-react";
@@ -29,12 +28,20 @@ export function Experience() {
   const [stops, setStops] = useState<number[]>([]);
   const [active, setActive] = useState(0);
 
+  // 0 → 1 as the list passes the reading line at 55% of the viewport.
   const { scrollYProgress } = useScroll({
     target: listRef,
     offset: ["start 55%", "end 55%"],
   });
-  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 26, restDelta: 0.0005 });
-  const orbTop = useTransform(progress, (v) => `${Math.min(Math.max(v, 0), 1) * 100}%`);
+
+  // Map the reading line onto the rail exactly (no spring), so the orb stays
+  // level with that line while you scroll and only parks at the rail's ends.
+  const geom = useRef({ listH: 1, railH: 1 });
+  const progress = useTransform(scrollYProgress, (v) => {
+    const { listH, railH } = geom.current;
+    return Math.min(Math.max((v * listH - RAIL_TOP) / railH, 0), 1);
+  });
+  const orbTop = useTransform(progress, (v) => `${v * 100}%`);
 
   // Where each role's node sits along the rail, as a 0..1 fraction. The rail
   // starts exactly at the first node, so the first role is lit from the start.
@@ -42,7 +49,9 @@ export function Experience() {
     const measure = () => {
       const list = listRef.current;
       if (!list) return;
-      const railH = Math.max(list.offsetHeight - RAIL_TOP - RAIL_BOTTOM, 1);
+      const listH = Math.max(list.offsetHeight, 1);
+      const railH = Math.max(listH - RAIL_TOP - RAIL_BOTTOM, 1);
+      geom.current = { listH, railH };
       setStops(itemRefs.current.map((el) => (el ? el.offsetTop / railH : 1)));
     };
     measure();

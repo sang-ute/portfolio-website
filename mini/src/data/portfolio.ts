@@ -51,11 +51,12 @@ export const PERSONAL_INFO = {
   location: "Ho Chi Minh City, Vietnam",
   github: "https://github.com/sang-ute",
   linkedin: "https://www.linkedin.com/in/sang-n-9946b6200/",
-  portrait: {
-    jpg: `${basePath}/assets/sang-portrait.jpg`,
-    webp: `${basePath}/assets/sang-portrait.webp`,
-    width: 960,
-    height: 1200,
+  portraitBackdrop: {
+    jpg: `${basePath}/assets/sang-backdrop.jpg`,
+    webp: `${basePath}/assets/sang-backdrop.webp`,
+    gradient: `${basePath}/assets/sang-gradient.jpg`,
+    width: 1136,
+    height: 1420,
     alt: "Nguyen Quang Sang, Software Engineer Intern at Money Forward Vietnam, smiling with arms crossed",
   },
   resumePdf: `${basePath}/assets/cv.pdf`,

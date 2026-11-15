@@ -19,6 +19,8 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { AmbientMesh } from "@/components/AmbientMesh";
 import { GlassSunbeamScroll } from "@/components/GlassSunbeamScroll";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { PortraitBackdrop } from "@/components/PortraitBackdrop";
+import { GlassPointer } from "@/components/GlassPointer";
 
 export default function Home() {
   const [resumeOpen, setResumeOpen] = useState(false);
@@ -34,7 +36,9 @@ export default function Home() {
     <div className="relative min-h-screen bg-[var(--bg)] text-[var(--fg)] transition-colors duration-300">
       {/* Ambient glass, sunbeam & cursor layers */}
       <CustomCursor />
+      <PortraitBackdrop />
       <AmbientMesh />
+      <GlassPointer />
       <GlassSunbeamScroll />
       <ScrollProgress />
 

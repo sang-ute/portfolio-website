@@ -119,7 +119,7 @@ export function Projects() {
         </div>
 
         {/* Category Filters */}
-        <div className="mb-8 flex gap-2 overflow-x-auto pb-2" aria-label="Filter projects">
+        <div className="-mx-1 mb-8 flex gap-2 overflow-x-auto px-1 py-1 pb-2" aria-label="Filter projects">
           {filterTabs.map((tab) => {
             const isActive = activeFilter === tab.id;
             return (
@@ -128,10 +128,8 @@ export function Projects() {
                 type="button"
                 onClick={() => setActiveFilter(tab.id)}
                 aria-pressed={isActive}
-                className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium transition-all duration-300 ${
-                  isActive
-                    ? "border-[var(--fg)] bg-[var(--spot)] text-[var(--fg)] shadow-sm"
-                    : "border-[var(--line)] text-[var(--mut)] hover:border-[var(--mut)] hover:text-[var(--fg)]"
+                className={`glass-pill inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-xs font-medium ${
+                  isActive ? "is-active text-[var(--fg)]" : "text-[var(--mut)] hover:text-[var(--fg)]"
                 }`}
               >
                 <tab.Icon className="h-4 w-4 text-current" />

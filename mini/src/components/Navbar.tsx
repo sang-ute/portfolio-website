@@ -36,14 +36,13 @@ export function Navbar({ onOpenResume, onReplayIntro }: NavbarProps) {
   };
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-500 ${
-        scrolled || mobileMenuOpen
-          ? "border-[var(--glass-edge)] bg-[var(--glass-tint)] shadow-lg shadow-black/5 backdrop-blur-2xl"
-          : "border-transparent bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
+      <div
+        className={`nav-shell mx-auto max-w-[1200px] rounded-[1.75rem] transition-all duration-500 ${
+          scrolled || mobileMenuOpen ? "is-glass" : ""
+        }`}
+      >
+      <div className="flex h-[60px] items-center justify-between pl-3 pr-2.5 sm:pl-4">
         <a href="#hero" aria-label="Nguyen Quang Sang, home" className="group inline-flex items-center gap-3">
           <span className="grid h-9 w-9 place-items-center rounded-full border border-[var(--glass-rim)] font-mono text-[11px] font-semibold tracking-[-0.08em] transition-colors group-hover:bg-[var(--fg)] group-hover:text-[var(--bg)]">
             QS
@@ -71,16 +70,16 @@ export function Navbar({ onOpenResume, onReplayIntro }: NavbarProps) {
             type="button"
             aria-label="Replay introduction"
             title="Replay introduction"
-            className="inline-flex h-10 items-center gap-2 rounded-full border border-[var(--glass-rim)] px-3 text-xs text-[var(--fg)] transition-colors hover:bg-[var(--fg)] hover:text-[var(--bg)]"
+            className="glass-pill inline-flex h-10 min-w-10 items-center justify-center gap-2 rounded-full px-3 text-xs text-[var(--fg)]"
           >
             <RotateCcw className="h-4 w-4" />
-            <span>Intro</span>
+            <span className="hidden sm:inline">Intro</span>
           </button>
           <button
             onClick={toggleTheme}
             type="button"
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
-            className="grid h-10 w-10 place-items-center rounded-full border border-[var(--glass-rim)] text-[var(--fg)] transition duration-300 hover:bg-[var(--fg)] hover:text-[var(--bg)]"
+            className="glass-pill grid h-10 w-10 place-items-center rounded-full text-[var(--fg)]"
           >
             {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
@@ -97,7 +96,7 @@ export function Navbar({ onOpenResume, onReplayIntro }: NavbarProps) {
             type="button"
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileMenuOpen}
-            className="grid h-10 w-10 place-items-center rounded-full border border-[var(--glass-rim)] text-[var(--fg)] md:hidden"
+            className="glass-pill grid h-10 w-10 place-items-center rounded-full text-[var(--fg)] md:hidden"
           >
             {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
@@ -112,9 +111,9 @@ export function Navbar({ onOpenResume, onReplayIntro }: NavbarProps) {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden border-t border-[var(--glass-edge)] px-6 md:hidden"
+            className="overflow-hidden border-t border-[var(--glass-edge)] px-4 md:hidden"
           >
-            <div className="mx-auto max-w-[1440px] py-3">
+            <div className="py-3">
               {navLinks.map((link, index) => (
                 <a
                   key={link.href}
@@ -140,6 +139,7 @@ export function Navbar({ onOpenResume, onReplayIntro }: NavbarProps) {
           </motion.nav>
         )}
       </AnimatePresence>
+      </div>
     </header>
   );
 }

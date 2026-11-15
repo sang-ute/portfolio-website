@@ -84,11 +84,11 @@ export function Skills() {
         </div>
 
         {/* Categories Grid with SVG Brand Logos */}
-        <div className="grid grid-cols-1 gap-px border border-[var(--line)] sm:grid-cols-2 lg:grid-cols-3 bg-[var(--line)] rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {SKILL_CATEGORIES.map((cat, idx) => (
             <div
               key={idx}
-              className="group bg-[var(--bg)] p-6 sm:p-7 transition-colors hover:bg-[var(--card)]"
+              className="liquid-glass group rounded-2xl p-6 sm:p-7"
             >
               <Reveal delay={(idx % 3) * 0.08} distance={28} amount={0.2}>
               <div className="mb-5 flex items-center gap-3">

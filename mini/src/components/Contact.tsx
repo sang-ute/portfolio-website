@@ -66,9 +66,9 @@ export function Contact({ onNotify }: ContactProps) {
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-[1fr_1.6fr]">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)]">
           {/* Direct contact cards */}
-          <div className="space-y-3">
+          <div className="min-w-0 space-y-3">
             {[
               {
                 icon: Mail,
@@ -109,7 +109,7 @@ export function Contact({ onNotify }: ContactProps) {
                 <div
                   className="editorial-card flex items-center justify-between gap-4 rounded-2xl px-5 py-4"
                 >
-                  <div className="flex items-center gap-3.5">
+                  <div className="flex min-w-0 items-center gap-3.5">
                     <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[var(--line)] bg-[var(--spot)] text-[var(--fg)]">
                       <Icon className="h-4 w-4" />
                     </span>
@@ -121,7 +121,7 @@ export function Contact({ onNotify }: ContactProps) {
                         href={href}
                         target={href.startsWith("http") ? "_blank" : undefined}
                         rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="truncate text-sm font-medium text-[var(--fg)] transition-opacity hover:opacity-70"
+                        className="block truncate text-sm font-medium text-[var(--fg)] transition-opacity hover:opacity-70"
                       >
                         {value}
                       </a>

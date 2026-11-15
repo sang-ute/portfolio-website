@@ -16,8 +16,6 @@ export function Hero() {
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
   const contentY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -120]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, reduceMotion ? 1 : 0]);
-  const portraitY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -60]);
-  const portraitScale = useTransform(scrollYProgress, [0, 1], [1, reduceMotion ? 1 : 0.94]);
 
   return (
     <section
@@ -32,7 +30,7 @@ export function Hero() {
       <div className="relative mx-auto w-full max-w-[1440px]">
         <motion.div
           style={{ y: contentY, opacity: contentOpacity }}
-          className="grid items-end gap-12 will-change-transform lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16"
+          className="will-change-transform"
         >
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}
@@ -67,7 +65,7 @@ export function Hero() {
             <a
               href="#about"
               aria-label="Scroll to about"
-              className="group hidden h-12 w-12 place-items-center rounded-full border border-[var(--glass-rim)] text-[var(--fg)] transition duration-300 hover:bg-[var(--fg)] hover:text-[var(--bg)] sm:grid"
+              className="glass-pill group hidden h-12 w-12 place-items-center rounded-full text-[var(--fg)] sm:grid"
             >
               <ArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" />
             </a>
@@ -84,7 +82,7 @@ export function Hero() {
             <a
               href={PERSONAL_INFO.resumePdf}
               download="Nguyen_Quang_Sang_CV.pdf"
-              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-[var(--glass-rim)] px-5 text-sm font-medium text-[var(--fg)] transition duration-300 hover:bg-[var(--spot)]"
+              className="glass-pill inline-flex min-h-12 items-center gap-2 rounded-full px-5 text-sm font-medium text-[var(--fg)]"
             >
               <Download className="h-4 w-4" />
               Résumé
@@ -116,33 +114,6 @@ export function Hero() {
           </div>
         </motion.div>
 
-        <motion.figure
-          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mx-auto w-full max-w-[18rem] sm:max-w-[20rem] lg:mx-0 lg:w-[22rem] lg:max-w-none xl:w-[24rem]"
-        >
-          <motion.div style={{ y: portraitY, scale: portraitScale }}>
-          <div className="overflow-hidden rounded-[1.75rem] border border-[var(--glass-rim)] bg-[var(--spot)] p-1.5 shadow-2xl">
-            <picture>
-              <source srcSet={PERSONAL_INFO.portrait.webp} type="image/webp" />
-              <img
-                src={PERSONAL_INFO.portrait.jpg}
-                alt={PERSONAL_INFO.portrait.alt}
-                width={PERSONAL_INFO.portrait.width}
-                height={PERSONAL_INFO.portrait.height}
-                fetchPriority="high"
-                decoding="async"
-                className="block aspect-[4/5] h-auto w-full rounded-[1.4rem] object-cover saturate-[0.8] transition duration-500 hover:saturate-100"
-              />
-            </picture>
-          </div>
-          <figcaption className="mt-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--mut)] sm:text-[10px]">
-            <span>{PERSONAL_INFO.name}</span>
-            <span>HCMUTE / MFi</span>
-          </figcaption>
-          </motion.div>
-        </motion.figure>
         </motion.div>
 
         <div className="mt-12 flex items-center justify-between border-t border-[var(--glass-edge)] pt-4 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--mut)] sm:text-[10px]">

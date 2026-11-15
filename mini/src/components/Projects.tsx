@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import { PROJECTS, Project } from "@/data/portfolio";
 import { TechLogo } from "./TechLogos";
+import { Reveal } from "./Reveal";
 
 const filterTabs: {
   id: Project["category"];
@@ -143,7 +144,7 @@ export function Projects() {
         {/* Projects Grid: items-stretch for identical height across rows */}
         <motion.div layout className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
+            {filteredProjects.map((project, pIdx) => (
               <motion.article
                 layout
                 initial={{ opacity: 0, y: 16 }}
@@ -153,6 +154,7 @@ export function Projects() {
                 key={project.title}
                 className="editorial-card group flex flex-col justify-between h-full rounded-2xl p-6 sm:p-7 relative overflow-hidden"
               >
+                <Reveal delay={(pIdx % 2) * 0.1} distance={28} amount={0.2} className="relative z-10 flex flex-1 flex-col">
                 {/* Upper Content: flex-1 ensures the footer parts stay locked to the bottom */}
                 <div className="relative z-10 flex flex-col flex-1">
                   {/* Top Bar: Icon + Badge + GitHub */}
@@ -251,6 +253,7 @@ export function Projects() {
                     </ul>
                   </div>
                 </div>
+                </Reveal>
               </motion.article>
             ))}
           </AnimatePresence>

@@ -3,6 +3,7 @@
 import React from "react";
 import { ArrowUpRight, Eye, ShieldCheck, Zap, Database, CheckCircle2, Award } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolio";
+import { Reveal } from "./Reveal";
 
 interface AboutProps {
   onOpenResume: () => void;
@@ -121,26 +122,27 @@ export function About({ onOpenResume }: AboutProps) {
 
         {/* 4 Graphical Metric Boxes */}
         <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {highlights.map((item) => (
-            <div
-              key={item.label}
-              className="liquid-glass rounded-xl p-5 transition-transform duration-300 hover:-translate-y-1"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <span className="font-mono text-[9px] uppercase tracking-wider text-[var(--mut)]">
-                  {item.label}
-                </span>
-                <span className="rounded-full border border-[var(--line)] bg-[var(--spot)] px-2 py-0.5 font-mono text-[8px] uppercase tracking-wider text-[var(--fg)]">
-                  {item.badge}
-                </span>
+          {highlights.map((item, idx) => (
+            <Reveal key={item.label} delay={idx * 0.08} distance={28} amount={0.2} className="h-full">
+              <div
+                className="h-full liquid-glass rounded-xl p-5 transition-transform duration-300 hover:-translate-y-1"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-mono text-[9px] uppercase tracking-wider text-[var(--mut)]">
+                    {item.label}
+                  </span>
+                  <span className="rounded-full border border-[var(--line)] bg-[var(--spot)] px-2 py-0.5 font-mono text-[8px] uppercase tracking-wider text-[var(--fg)]">
+                    {item.badge}
+                  </span>
+                </div>
+                <p className="text-2xl font-semibold tracking-tight text-[var(--fg)] sm:text-3xl">
+                  {item.value}
+                </p>
+                <p className="mt-1 font-mono text-[10px] text-[var(--mut)]">
+                  {item.detail}
+                </p>
               </div>
-              <p className="text-2xl font-semibold tracking-tight text-[var(--fg)] sm:text-3xl">
-                {item.value}
-              </p>
-              <p className="mt-1 font-mono text-[10px] text-[var(--mut)]">
-                {item.detail}
-              </p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -4,6 +4,7 @@ import React from "react";
 import { Code, Layers, CloudLightning, Database, Wrench, Users, BarChart3, Check } from "lucide-react";
 import { SKILL_CATEGORIES } from "@/data/portfolio";
 import { TechLogo } from "./TechLogos";
+import { Reveal } from "./Reveal";
 
 function getIcon(iconName: string) {
   const cls = "h-4 w-4 text-[var(--fg)]";
@@ -89,6 +90,7 @@ export function Skills() {
               key={idx}
               className="group bg-[var(--bg)] p-6 sm:p-7 transition-colors hover:bg-[var(--card)]"
             >
+              <Reveal delay={(idx % 3) * 0.08} distance={28} amount={0.2}>
               <div className="mb-5 flex items-center gap-3">
                 <span className="grid h-8 w-8 place-items-center rounded-lg border border-[var(--line)] bg-[var(--spot)]">
                   {getIcon(cat.icon)}
@@ -114,6 +116,7 @@ export function Skills() {
                   </div>
                 ))}
               </div>
+              </Reveal>
             </div>
           ))}
         </div>

@@ -3,6 +3,7 @@
 import React from "react";
 import { GraduationCap, Award } from "lucide-react";
 import { EDUCATIONS, CERTIFICATIONS } from "@/data/portfolio";
+import { Reveal } from "./Reveal";
 
 export function Education() {
   const edu = EDUCATIONS[0];
@@ -95,27 +96,28 @@ export function Education() {
 
             <div className="space-y-3">
               {CERTIFICATIONS.map((cert, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center justify-between gap-4 rounded-xl border border-[var(--line)] px-4 py-3 transition-colors hover:bg-[var(--card)]"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[var(--line)] bg-[var(--spot)] font-mono text-xs font-bold text-[var(--fg)]">
-                      {cert.badge}
-                    </span>
-                    <div>
-                      <p className="text-sm font-medium text-[var(--fg)]">
-                        {cert.name}
-                      </p>
-                      <p className="font-mono text-[10px] text-[var(--mut)]">
-                        {cert.issuer}
-                      </p>
+                <Reveal key={idx} delay={idx * 0.06} distance={28} amount={0.2}>
+                  <div
+                    className="flex items-center justify-between gap-4 rounded-xl border border-[var(--line)] px-4 py-3 transition-colors hover:bg-[var(--card)]"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[var(--line)] bg-[var(--spot)] font-mono text-xs font-bold text-[var(--fg)]">
+                        {cert.badge}
+                      </span>
+                      <div>
+                        <p className="text-sm font-medium text-[var(--fg)]">
+                          {cert.name}
+                        </p>
+                        <p className="font-mono text-[10px] text-[var(--mut)]">
+                          {cert.issuer}
+                        </p>
+                      </div>
                     </div>
+                    <span className="shrink-0 rounded-full border border-[var(--line)] px-2.5 py-1 font-mono text-[10px] text-[var(--mut)]">
+                      {cert.type}
+                    </span>
                   </div>
-                  <span className="shrink-0 rounded-full border border-[var(--line)] px-2.5 py-1 font-mono text-[10px] text-[var(--mut)]">
-                    {cert.type}
-                  </span>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>

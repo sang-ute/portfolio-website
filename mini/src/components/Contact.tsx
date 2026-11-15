@@ -12,6 +12,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolio";
+import { Reveal } from "./Reveal";
 
 interface ContactProps {
   onNotify: (msg: string) => void;
@@ -103,49 +104,50 @@ export function Contact({ onNotify }: ContactProps) {
                 action: null,
                 ActionIcon: ExternalLink,
               },
-            ].map(({ icon: Icon, label, value, href, action, ActionIcon }) => (
-              <div
-                key={label}
-                className="editorial-card flex items-center justify-between gap-4 rounded-2xl px-5 py-4"
-              >
-                <div className="flex items-center gap-3.5">
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[var(--line)] bg-[var(--spot)] text-[var(--fg)]">
-                    <Icon className="h-4 w-4" />
-                  </span>
-                  <div className="min-w-0">
-                    <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--mut)]">
-                      {label}
-                    </p>
+            ].map(({ icon: Icon, label, value, href, action, ActionIcon }, idx) => (
+              <Reveal key={label} delay={idx * 0.08} distance={28} amount={0.2}>
+                <div
+                  className="editorial-card flex items-center justify-between gap-4 rounded-2xl px-5 py-4"
+                >
+                  <div className="flex items-center gap-3.5">
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[var(--line)] bg-[var(--spot)] text-[var(--fg)]">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    <div className="min-w-0">
+                      <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--mut)]">
+                        {label}
+                      </p>
+                      <a
+                        href={href}
+                        target={href.startsWith("http") ? "_blank" : undefined}
+                        rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        className="truncate text-sm font-medium text-[var(--fg)] transition-opacity hover:opacity-70"
+                      >
+                        {value}
+                      </a>
+                    </div>
+                  </div>
+                  {action ? (
+                    <button
+                      type="button"
+                      onClick={action}
+                      title={`Copy ${label}`}
+                      className="shrink-0 grid h-9 w-9 place-items-center rounded-lg border border-[var(--line)] text-[var(--mut)] transition hover:border-[var(--fg)] hover:text-[var(--fg)]"
+                    >
+                      <ActionIcon className="h-3.5 w-3.5" />
+                    </button>
+                  ) : (
                     <a
                       href={href}
-                      target={href.startsWith("http") ? "_blank" : undefined}
-                      rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="truncate text-sm font-medium text-[var(--fg)] transition-opacity hover:opacity-70"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="shrink-0 grid h-9 w-9 place-items-center rounded-lg border border-[var(--line)] text-[var(--mut)] transition hover:border-[var(--fg)] hover:text-[var(--fg)]"
                     >
-                      {value}
+                      <ActionIcon className="h-3.5 w-3.5" />
                     </a>
-                  </div>
+                  )}
                 </div>
-                {action ? (
-                  <button
-                    type="button"
-                    onClick={action}
-                    title={`Copy ${label}`}
-                    className="shrink-0 grid h-9 w-9 place-items-center rounded-lg border border-[var(--line)] text-[var(--mut)] transition hover:border-[var(--fg)] hover:text-[var(--fg)]"
-                  >
-                    <ActionIcon className="h-3.5 w-3.5" />
-                  </button>
-                ) : (
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shrink-0 grid h-9 w-9 place-items-center rounded-lg border border-[var(--line)] text-[var(--mut)] transition hover:border-[var(--fg)] hover:text-[var(--fg)]"
-                  >
-                    <ActionIcon className="h-3.5 w-3.5" />
-                  </a>
-                )}
-              </div>
+              </Reveal>
             ))}
           </div>
 

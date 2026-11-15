@@ -1,16 +1,27 @@
 "use client";
 
-import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Download, Github, Linkedin } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolio";
 import { SystemIllustration } from "./SystemIllustration";
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Scroll-linked exit: 0 while the hero fills the screen, 1 once it has
+  // scrolled fully out. Being tied to scroll position, it reverses naturally
+  // when scrolling back up.
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -120]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, reduceMotion ? 1 : 0]);
+  const portraitY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -60]);
+  const portraitScale = useTransform(scrollYProgress, [0, 1], [1, reduceMotion ? 1 : 0.94]);
 
   return (
     <section
+      ref={sectionRef}
       id="hero"
       className="hero-stage relative isolate flex min-h-[min(900px,100svh)] items-end overflow-hidden px-5 pb-12 pt-32 sm:px-8 sm:pb-16 lg:min-h-[850px] lg:px-12"
     >
@@ -19,7 +30,10 @@ export function Hero() {
       <SystemIllustration className="pointer-events-none absolute right-[-9rem] top-[12%] -z-10 h-[min(72vw,42rem)] w-[min(72vw,42rem)] text-[var(--fg)] opacity-15 sm:right-[-5rem] sm:top-[7%] sm:opacity-20 lg:right-[3%] lg:top-[8%]" />
 
       <div className="relative mx-auto w-full max-w-[1440px]">
-        <div className="grid items-end gap-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
+        <motion.div
+          style={{ y: contentY, opacity: contentOpacity }}
+          className="grid items-end gap-12 will-change-transform lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16"
+        >
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -108,6 +122,7 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="relative mx-auto w-full max-w-[18rem] sm:max-w-[20rem] lg:mx-0 lg:w-[22rem] lg:max-w-none xl:w-[24rem]"
         >
+          <motion.div style={{ y: portraitY, scale: portraitScale }}>
           <div className="overflow-hidden rounded-[1.75rem] border border-[var(--glass-rim)] bg-[var(--spot)] p-1.5 shadow-2xl">
             <picture>
               <source srcSet={PERSONAL_INFO.portrait.webp} type="image/webp" />
@@ -126,8 +141,9 @@ export function Hero() {
             <span>{PERSONAL_INFO.name}</span>
             <span>HCMUTE / MFi</span>
           </figcaption>
+          </motion.div>
         </motion.figure>
-        </div>
+        </motion.div>
 
         <div className="mt-12 flex items-center justify-between border-t border-[var(--glass-edge)] pt-4 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--mut)] sm:text-[10px]">
           <span>Nguyen Quang Sang</span>

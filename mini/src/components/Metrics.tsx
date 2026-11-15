@@ -3,6 +3,7 @@
 import React from "react";
 import { Activity, Server, Zap, Shield, Database, Cpu } from "lucide-react";
 import { motion } from "framer-motion";
+import { Reveal } from "./Reveal";
 
 export function Metrics() {
   const telemetryData = [
@@ -60,53 +61,54 @@ export function Metrics() {
           {telemetryData.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
-                key={idx}
-                className="liquid-glass group relative flex flex-col justify-between rounded-xl p-5 transition-all duration-300 hover:-translate-y-1"
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="grid h-8 w-8 place-items-center rounded-lg border border-[var(--line)] bg-[var(--spot)] text-[var(--fg)]">
-                      <Icon className="h-4 w-4" />
-                    </span>
-                    <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 font-mono text-[9px] font-semibold text-emerald-400">
-                      {item.trend}
-                    </span>
-                  </div>
-
-                  <div className="mt-4 flex items-baseline justify-between gap-2">
-                    <p className="text-3xl font-semibold tracking-tight text-[var(--fg)]">
-                      {item.value}
-                    </p>
-                    {/* SVG Mini Sparkline Graph */}
-                    <div className="h-6 w-24">
-                      <svg
-                        viewBox="0 0 120 24"
-                        fill="none"
-                        className="h-full w-full overflow-visible"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d={item.sparkline}
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          className="text-emerald-500/80 transition-all duration-300 group-hover:text-emerald-400"
-                        />
-                        <circle cx="120" cy="3" r="2.5" fill="#10B981" />
-                      </svg>
+              <Reveal key={idx} delay={idx * 0.08} distance={28} amount={0.2} className="h-full">
+                <div
+                  className="h-full liquid-glass group relative flex flex-col justify-between rounded-xl p-5 transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <span className="grid h-8 w-8 place-items-center rounded-lg border border-[var(--line)] bg-[var(--spot)] text-[var(--fg)]">
+                        <Icon className="h-4 w-4" />
+                      </span>
+                      <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 font-mono text-[9px] font-semibold text-emerald-400">
+                        {item.trend}
+                      </span>
                     </div>
+
+                    <div className="mt-4 flex items-baseline justify-between gap-2">
+                      <p className="text-3xl font-semibold tracking-tight text-[var(--fg)]">
+                        {item.value}
+                      </p>
+                      {/* SVG Mini Sparkline Graph */}
+                      <div className="h-6 w-24">
+                        <svg
+                          viewBox="0 0 120 24"
+                          fill="none"
+                          className="h-full w-full overflow-visible"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d={item.sparkline}
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            className="text-emerald-500/80 transition-all duration-300 group-hover:text-emerald-400"
+                          />
+                          <circle cx="120" cy="3" r="2.5" fill="#10B981" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--mut)]">
+                      {item.label}
+                    </p>
                   </div>
 
-                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--mut)]">
-                    {item.label}
+                  <p className="mt-3 border-t border-[var(--line)]/50 pt-2.5 text-xs text-[var(--mut)]">
+                    {item.sub}
                   </p>
                 </div>
-
-                <p className="mt-3 border-t border-[var(--line)]/50 pt-2.5 text-xs text-[var(--mut)]">
-                  {item.sub}
-                </p>
-              </div>
+              </Reveal>
             );
           })}
         </div>

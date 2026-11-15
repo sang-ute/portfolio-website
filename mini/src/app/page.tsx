@@ -18,6 +18,7 @@ import { SplashIntro } from "@/components/SplashIntro";
 import { CustomCursor } from "@/components/CustomCursor";
 import { AmbientMesh } from "@/components/AmbientMesh";
 import { GlassSunbeamScroll } from "@/components/GlassSunbeamScroll";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 export default function Home() {
   const [resumeOpen, setResumeOpen] = useState(false);
@@ -35,6 +36,7 @@ export default function Home() {
       <CustomCursor />
       <AmbientMesh />
       <GlassSunbeamScroll />
+      <ScrollProgress />
 
       {/* Splash intro */}
       <SplashIntro replayKey={introReplayKey} />
@@ -56,13 +58,13 @@ export default function Home() {
       {/* Main content with SEO-compliant staggered scroll reveals */}
       <main className="relative z-10">
         <Hero />
-        <Reveal><Metrics /></Reveal>
-        <Reveal delay={0.05}><About onOpenResume={() => setResumeOpen(true)} /></Reveal>
-        <Reveal delay={0.05}><Experience /></Reveal>
-        <Reveal delay={0.05}><Projects /></Reveal>
-        <Reveal delay={0.05}><Skills /></Reveal>
-        <Reveal delay={0.05}><Education /></Reveal>
-        <Reveal delay={0.05}><Contact onNotify={showToast} /></Reveal>
+        <Reveal distance={24}><Metrics /></Reveal>
+        <Reveal distance={24}><About onOpenResume={() => setResumeOpen(true)} /></Reveal>
+        <Reveal distance={24}><Experience /></Reveal>
+        <Reveal distance={24}><Projects /></Reveal>
+        <Reveal distance={24}><Skills /></Reveal>
+        <Reveal distance={24}><Education /></Reveal>
+        <Reveal distance={24}><Contact onNotify={showToast} /></Reveal>
       </main>
 
       {/* Footer */}

@@ -23,7 +23,7 @@ export function GlassSunbeamScroll() {
 
   if (reduceMotion) {
     return (
-      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+      <div className="sunbeam-layer pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
         <div className="absolute -top-[20%] right-[-10%] h-[70vw] w-[70vw] rounded-full bg-gradient-to-br from-amber-400/10 via-rose-400/5 to-transparent blur-[120px]" />
       </div>
     );
@@ -31,7 +31,7 @@ export function GlassSunbeamScroll() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
+      className="sunbeam-layer pointer-events-none fixed inset-0 z-0 overflow-hidden"
       aria-hidden="true"
     >
       {/* Primary Warm Sunlight Flare (Sun shining through architectural glass) */}

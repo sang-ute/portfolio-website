@@ -24,7 +24,7 @@ const headshot = `${siteUrl}/assets/sang-headshot.jpg`;
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f5f5f5" },
+    { media: "(prefers-color-scheme: light)", color: "#f5f5f7" },
     { media: "(prefers-color-scheme: dark)", color: "#050505" },
   ],
   width: "device-width",

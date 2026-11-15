@@ -163,8 +163,9 @@ export function Contact({ onNotify }: ContactProps) {
             <form onSubmit={handleSubmit} className="mt-6 space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className={labelCls}>Your name</label>
+                  <label htmlFor="contact-name" className={labelCls}>Your name</label>
                   <input
+                    id="contact-name"
                     type="text"
                     required
                     value={name}
@@ -174,8 +175,9 @@ export function Contact({ onNotify }: ContactProps) {
                   />
                 </div>
                 <div>
-                  <label className={labelCls}>Your email</label>
+                  <label htmlFor="contact-email" className={labelCls}>Your email</label>
                   <input
+                    id="contact-email"
                     type="email"
                     required
                     value={email}
@@ -187,8 +189,9 @@ export function Contact({ onNotify }: ContactProps) {
               </div>
 
               <div>
-                <label className={labelCls}>Subject</label>
+                <label htmlFor="contact-subject" className={labelCls}>Subject</label>
                 <select
+                  id="contact-subject"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
                   className={inputCls}
@@ -209,8 +212,9 @@ export function Contact({ onNotify }: ContactProps) {
               </div>
 
               <div>
-                <label className={labelCls}>Message</label>
+                <label htmlFor="contact-message" className={labelCls}>Message</label>
                 <textarea
+                  id="contact-message"
                   rows={4}
                   required
                   value={message}

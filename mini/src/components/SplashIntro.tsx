@@ -6,13 +6,23 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolio";
 import { SystemIllustration } from "./SystemIllustration";
 
-export function SplashIntro({ replayKey }: { replayKey: number }) {
+export function SplashIntro({
+  replayKey,
+  onDone,
+  onShow,
+}: {
+  replayKey: number;
+  onDone?: () => void;
+  onShow?: () => void;
+}) {
   const [visible, setVisible] = useState(true);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (replayKey === 0) return;
     setVisible(true);
+    onShow?.();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [replayKey]);
 
   useEffect(() => {
@@ -32,7 +42,7 @@ export function SplashIntro({ replayKey }: { replayKey: number }) {
   }, [visible]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={onDone}>
       {visible && (
         <motion.section
           aria-label="Portfolio introduction"

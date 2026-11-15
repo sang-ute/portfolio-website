@@ -14,11 +14,23 @@ export function GlassPointer() {
     if (!window.matchMedia("(hover: hover)").matches) return;
     let frame = 0;
     let last: PointerEvent | null = null;
+    let current: HTMLElement | null = null;
+
+    // Clear the light from a surface the pointer has left, so its rim glow
+    // fades out instead of freezing at the last position.
+    const release = (el: HTMLElement | null) => {
+      el?.style.removeProperty("--mx");
+      el?.style.removeProperty("--my");
+    };
 
     const apply = () => {
       frame = 0;
       if (!last) return;
       const el = (last.target as Element | null)?.closest?.(GLASS) as HTMLElement | null;
+      if (el !== current) {
+        release(current);
+        current = el;
+      }
       if (!el) return;
       const r = el.getBoundingClientRect();
       el.style.setProperty("--mx", `${last.clientX - r.left}px`);

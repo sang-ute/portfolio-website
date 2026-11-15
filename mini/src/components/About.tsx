@@ -4,6 +4,7 @@ import React from "react";
 import { ArrowUpRight, Eye, ShieldCheck, Zap, Database, CheckCircle2, Award } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolio";
 import { Reveal } from "./Reveal";
+import { CountUp } from "./CountUp";
 
 interface AboutProps {
   onOpenResume: () => void;
@@ -136,7 +137,7 @@ export function About({ onOpenResume }: AboutProps) {
                   </span>
                 </div>
                 <p className="text-2xl font-semibold tracking-tight text-[var(--fg)] sm:text-3xl">
-                  {item.value}
+                  <CountUp value={item.value} />
                 </p>
                 <p className="mt-1 font-mono text-[10px] text-[var(--mut)]">
                   {item.detail}

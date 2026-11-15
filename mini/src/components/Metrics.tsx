@@ -4,6 +4,7 @@ import React from "react";
 import { Activity, Server, Zap, Shield, Database, Cpu } from "lucide-react";
 import { motion } from "framer-motion";
 import { Reveal } from "./Reveal";
+import { CountUp } from "./CountUp";
 
 export function Metrics() {
   const telemetryData = [
@@ -77,7 +78,7 @@ export function Metrics() {
 
                     <div className="mt-4 flex items-baseline justify-between gap-2">
                       <p className="text-3xl font-semibold tracking-tight text-[var(--fg)]">
-                        {item.value}
+                        <CountUp value={item.value} />
                       </p>
                       {/* SVG Mini Sparkline Graph */}
                       <div className="h-6 w-24">

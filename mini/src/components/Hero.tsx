@@ -1,12 +1,23 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform, type Variants } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Download, Github, Linkedin } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolio";
 import { SystemIllustration } from "./SystemIllustration";
+import { Magnetic } from "./Magnetic";
 
-export function Hero() {
+// Each headline line rises out of its own mask, staggered.
+const lineVariants: Variants = {
+  hidden: { y: "135%" },
+  shown: (i: number) => ({
+    y: "0%",
+    transition: { duration: 1.05, delay: 0.15 + i * 0.13, ease: [0.16, 1, 0.3, 1] },
+  }),
+};
+
+/** `ready` flips true once the splash intro has left, so the entrance is actually seen. */
+export function Hero({ ready = true }: { ready?: boolean }) {
   const reduceMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -34,14 +45,14 @@ export function Hero() {
         >
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+          animate={ready || reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-5xl"
         >
           <div className="mb-7 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[10px] uppercase tracking-[0.24em] text-[var(--mut)] sm:text-xs">
-            <span className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--fg)]" />
-              Software Engineer Intern
+            <span className="glass-pill inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[var(--fg)]">
+              <span className="pulse-dot" aria-hidden="true" />
+              Now · Software Engineer Intern
             </span>
             <span aria-hidden="true" className="text-[var(--line)]">/</span>
             <span>Money Forward Vietnam</span>
@@ -51,11 +62,23 @@ export function Hero() {
 
           <h1 className="max-w-5xl text-[clamp(3.5rem,10vw,9rem)] font-medium leading-[0.88] tracking-[-0.085em] text-[var(--fg)]">
             <span className="sr-only">Nguyen Quang Sang, Software Engineer: </span>
-            Software,
-            <br />
-            <span className="hero-title-second">engineered to</span>
-            <br />
-            <span className="hero-title-third">move forward.</span>
+            {[
+              <>Software,</>,
+              <span key="2" className="hero-title-second">engineered to</span>,
+              <span key="3" className="hero-title-third">move forward.</span>,
+            ].map((line, i) => (
+              <span key={i} className="hero-line">
+                <motion.span
+                  className="block"
+                  custom={i}
+                  variants={lineVariants}
+                  initial={reduceMotion ? false : "hidden"}
+                  animate={ready || reduceMotion ? "shown" : "hidden"}
+                >
+                  {line}
+                </motion.span>
+              </span>
+            ))}
           </h1>
 
           <div className="mt-8 grid max-w-3xl gap-6 sm:grid-cols-[1fr_auto] sm:items-end">
@@ -72,6 +95,7 @@ export function Hero() {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Magnetic>
             <a
               href="#projects"
               className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-[var(--fg)] px-5 text-sm font-semibold text-[var(--bg)] transition duration-300 hover:-translate-y-0.5 hover:opacity-80"
@@ -79,6 +103,8 @@ export function Hero() {
               Selected work
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
+            </Magnetic>
+            <Magnetic>
             <a
               href={PERSONAL_INFO.resumePdf}
               download="Nguyen_Quang_Sang_CV.pdf"
@@ -87,6 +113,7 @@ export function Hero() {
               <Download className="h-4 w-4" />
               Résumé
             </a>
+            </Magnetic>
           </div>
 
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-[var(--mut)]">

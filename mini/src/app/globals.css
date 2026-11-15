@@ -28,6 +28,13 @@
   --portrait-filter: saturate(0.85) brightness(0.72) contrast(1.05);
   --field-opacity: 0.32;
   --field-blend: screen;
+  --glass-rim-spot: rgba(255, 255, 255, 0.95);
+  --tl-ink: #f5f5f5;
+  --tl-orb-core: #9fb3c8;
+  --tl-ring: rgba(255, 255, 255, 0.12);
+  --tl-glow: rgba(150, 200, 215, 0.35);
+  --wm-base: rgba(255, 255, 255, 0.05);
+  --wm-hi: rgba(255, 255, 255, 0.4);
   --liquid-border: rgba(255, 255, 255, 0.09);
   --liquid-border-hover: rgba(255, 255, 255, 0.22);
   --liquid-specular: rgba(255, 255, 255, 0.18);
@@ -88,6 +95,13 @@
   --portrait-filter: saturate(0.9) brightness(1.04) contrast(0.94);
   --field-opacity: 0.2;
   --field-blend: normal;
+  --glass-rim-spot: rgba(40, 125, 145, 0.75);
+  --tl-ink: #1d1d1f;
+  --tl-orb-core: #3b6f80;
+  --tl-ring: rgba(29, 29, 31, 0.08);
+  --tl-glow: rgba(70, 160, 180, 0.28);
+  --wm-base: rgba(29, 29, 31, 0.06);
+  --wm-hi: rgba(40, 125, 145, 0.45);
   --liquid-border: rgba(0, 0, 0, 0.08);
   --liquid-border-hover: rgba(0, 0, 0, 0.18);
   --liquid-specular: rgba(255, 255, 255, 0.95);
@@ -895,5 +909,253 @@ a {
     opacity: calc(var(--portrait-opacity) * 0.55);
     -webkit-mask-image: linear-gradient(to bottom, #000 12%, transparent 70%);
     mask-image: linear-gradient(to bottom, #000 12%, transparent 70%);
+  }
+}
+
+/* =========================================================
+   10. SHOWPIECE EFFECTS
+   ========================================================= */
+
+/* --- Cursor-traced rim: the glass edge lights up where the pointer is --- */
+.editorial-card::after,
+.liquid-glass::after,
+.glass-card::after,
+.glass-pill::after {
+  background:
+    radial-gradient(
+      var(--rim-glow-r, 180px) circle at var(--mx, -999px) var(--my, -999px),
+      var(--glass-rim-spot),
+      transparent 70%
+    ),
+    linear-gradient(
+      135deg,
+      var(--glass-rim-hi) 0%,
+      var(--glass-rim-lo) 28%,
+      var(--glass-rim-lo) 62%,
+      var(--glass-rim-alt) 100%
+    );
+}
+
+.glass-pill {
+  --rim-glow-r: 60px;
+}
+
+/* --- Experience timeline ------------------------------------------------ */
+.tl-rail {
+  width: 2px;
+}
+
+.tl-track,
+.tl-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+}
+
+.tl-track {
+  background: linear-gradient(180deg, transparent, var(--line) 8%, var(--line) 92%, transparent);
+}
+
+.tl-fill {
+  transform-origin: top;
+  background: linear-gradient(180deg, transparent, var(--tl-ink) 10%, var(--tl-ink));
+  box-shadow: 0 0 12px var(--tl-glow);
+}
+
+.tl-orb-mover {
+  position: absolute;
+  left: 1px;
+  width: 0;
+  height: 0;
+  will-change: top;
+}
+
+/* A small liquid-glass sphere: specular highlight, rim ring, glow */
+.tl-orb {
+  position: absolute;
+  top: -11px;
+  left: -11px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.95) 0 18%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--tl-ink), var(--tl-orb-core) 75%);
+  box-shadow:
+    0 0 0 5px var(--tl-ring),
+    0 0 26px 8px var(--tl-glow),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.tl-orb::before,
+.tl-orb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--tl-ink);
+  opacity: 0;
+  animation: tlRipple 3s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+}
+
+.tl-orb::after {
+  animation-delay: 1.5s;
+}
+
+.tl-halo {
+  position: absolute;
+  top: -180px;
+  left: -180px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--tl-glow), transparent);
+  animation: tlBreathe 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.tl-node {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--line);
+  transition:
+    border-color 0.5s var(--ease-out-expo),
+    background 0.5s var(--ease-out-expo),
+    box-shadow 0.5s var(--ease-out-expo),
+    transform 0.5s var(--ease-out-expo);
+}
+
+.tl-node.is-lit {
+  border-color: var(--tl-ink);
+  background: var(--tl-ink);
+  box-shadow: 0 0 0 4px var(--tl-ring), 0 0 18px var(--tl-glow);
+  transform: scale(1.1);
+}
+
+/* Cards dim slightly until the orb reaches them */
+.tl-card {
+  transition:
+    opacity 0.6s var(--ease-out-expo),
+    filter 0.6s var(--ease-out-expo),
+    transform 0.5s var(--ease-out-expo),
+    box-shadow 0.5s var(--ease-out-expo);
+}
+
+.tl-card:not(.is-lit) {
+  opacity: 0.55;
+  filter: saturate(0.6);
+}
+
+.tl-card.is-lit::after {
+  opacity: 1;
+}
+
+@keyframes tlRipple {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(3.4);
+    opacity: 0;
+  }
+}
+
+@keyframes tlBreathe {
+  0%,
+  100% {
+    transform: scale(0.85);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+/* --- Live pulse dot ------------------------------------------------------ */
+.pulse-dot {
+  position: relative;
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34c759;
+}
+
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #34c759;
+  animation: pulseOut 2s ease-out infinite;
+}
+
+@keyframes pulseOut {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* --- Hero headline: each line rises out of its own mask ------------------ */
+.hero-line {
+  display: block;
+  overflow: hidden;
+  /* room for descenders under the tight leading */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+/* --- Footer watermark with light sweep ----------------------------------- */
+.footer-watermark {
+  margin: 0;
+  padding-top: 0.05em;
+  font-size: clamp(4rem, 17.5vw, 17rem);
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.075em;
+  white-space: nowrap;
+  text-align: center;
+  color: transparent;
+  background: linear-gradient(
+    100deg,
+    var(--wm-base) 0%,
+    var(--wm-base) 40%,
+    var(--wm-hi) 50%,
+    var(--wm-base) 60%,
+    var(--wm-base) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: wmSweep 7s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes wmSweep {
+  0% {
+    background-position: 100% 0;
+  }
+  60%,
+  100% {
+    background-position: 0% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-orb::before,
+  .tl-orb::after,
+  .tl-halo,
+  .pulse-dot::after,
+  .footer-watermark {
+    animation: none !important;
   }
 }

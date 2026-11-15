@@ -26,6 +26,7 @@ export default function Home() {
   const [resumeOpen, setResumeOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [introReplayKey, setIntroReplayKey] = useState(0);
+  const [introDone, setIntroDone] = useState(false);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -43,7 +44,11 @@ export default function Home() {
       <ScrollProgress />
 
       {/* Splash intro */}
-      <SplashIntro replayKey={introReplayKey} />
+      <SplashIntro
+        replayKey={introReplayKey}
+        onDone={() => setIntroDone(true)}
+        onShow={() => setIntroDone(false)}
+      />
 
       {/* Toast notification */}
       {toastMessage && (
@@ -61,7 +66,7 @@ export default function Home() {
 
       {/* Main content with SEO-compliant staggered scroll reveals */}
       <main className="relative z-10">
-        <Hero />
+        <Hero ready={introDone} />
         <Reveal distance={24}><Metrics /></Reveal>
         <Reveal distance={24}><About onOpenResume={() => setResumeOpen(true)} /></Reveal>
         <Reveal distance={24}><Experience /></Reveal>
